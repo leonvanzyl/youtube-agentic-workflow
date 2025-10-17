@@ -14,47 +14,59 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Goal
 
-Create a comprehensive, SEO-optimized video description that:
-- Hooks viewers in the first 2-3 lines (visible before "Show More")
-- Incorporates keywords naturally for search discovery
-- Provides structured content overview with timestamps
-- Includes relevant links and resources
-- Contains effective calls-to-action for engagement
-- Stays within YouTube's 5000 character limit
-- Adds genuine value beyond the video content
+Create a SEO-optimized video description following this specific structure:
+
+1. **Strong SEO opening paragraph** (<200 words) - Hook viewers and incorporate keywords naturally
+2. **Links section** - Sponsor/affiliate links, resources mentioned, support links, social connections
+3. **Timestamps** - Extracted from subtitle track in references folder with descriptive labels
+4. **Three strategic hashtags**:
+   - Video-specific (most important keyword from the video)
+   - Industry-specific (broader category)
+   - Broad appeal (reaches wider audience)
 
 ---
 
 ## Operating Constraints
 
-**ANALYSIS REQUIRED**: This command requires an existing analysis.md file with keyword data.
+**ANALYSIS FILE CRITICAL**: The analysis.md file is the PRIMARY source for:
 
-**MOBILE-FIRST**: First 150 characters are CRITICAL (visible on mobile without expanding).
+- Primary, secondary, and long-tail keywords
+- Video concept and overall vibe
+- Target audience and tone
+- Value propositions and key themes
 
-**KEYWORD INTEGRATION**: Must be natural, not stuffed. Keywords should flow conversationally.
+**SUBTITLE TRACK REQUIRED**: Used to extract accurate timestamps from the subtitle file (.srt or .vtt) in the `content/[project-name]/references/` folder.
 
-**TIMESTAMP INCLUSION**: Required for videos over 5 minutes (helps with suggested clips and user navigation).
+**ANALYSIS-DRIVEN SEO**: The SEO paragraph must be built around keywords and insights from analysis.md. Without it, optimization will be severely limited.
 
-**CALL-TO-ACTION BALANCE**: Engaging but not pushy. Focus on value, not begging.
+**MOBILE-FIRST**: First 150-200 words are CRITICAL for SEO and mobile visibility.
 
-**CHARACTER LIMIT**: Maximum 5000 characters total.
+**KEYWORD INTEGRATION**: Natural and conversational - focus on value, not keyword stuffing.
+
+**CHARACTER LIMIT**: Maximum 5000 characters total (YouTube limit).
 
 ---
 
 ## Input Handling
 
 ### With Project Name
+
 If user provides a project name: `$ARGUMENTS = "project-name"`
-- Use: `youtube/content/[project-name]/analysis.md`
+
+- Use: `content/[project-name]/analysis.md`
 
 ### Without Project Name
+
 If user provides no arguments:
-1. List available projects in `youtube/content/`
+
+1. List available projects in `content/`
 2. If only one project exists, use it automatically
 3. If multiple exist, ask user to specify which project
 
 ### With Additional Context
+
 If user provides context like: "include link to course" or "mention the GitHub repo"
+
 - Use the most recent project (or prompt to specify)
 - Incorporate their specific requirements into description
 
@@ -62,380 +74,255 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 ## Execution Steps
 
-### Step 1: Load Context
+### Step 1: Load Context and Locate Files
 
 1. **Locate required files**:
+
    ```
-   ANALYSIS_FILE = youtube/content/[project-name]/analysis.md
-   TITLES_FILE = youtube/content/[project-name]/titles.md (if exists)
-   HOOK_FILE = youtube/content/[project-name]/hook.md (if exists)
-   ```
-
-2. **Read and extract key information**:
-
-   **From Analysis**:
-   - Primary keywords (for SEO)
-   - Secondary keywords (for natural distribution)
-   - Long-tail keywords (for specific search queries)
-   - Target audience (for language/tone)
-   - Content vibe (for description style)
-   - Unique value proposition (for value communication)
-   - Key points covered (for content overview section)
-
-   **From Titles** (if available):
-   - Chosen or recommended title (for consistency)
-   - Title strategy (browse/search focus)
-
-   **From Hook** (if available):
-   - Main value propositions mentioned
-   - Key points to highlight
-
-3. **If analysis file not found**:
-   ```
-   ERROR: "No analysis found for '[project-name]'. Please run /yt.analyze first."
+   ANALYSIS_FILE = content/[project-name]/analysis.md (STRONGLY RECOMMENDED)
+   SUBTITLE_FILE = content/[project-name]/references/*.srt or *.vtt (REQUIRED)
+   TITLES_FILE = content/[project-name]/titles.md (if exists)
+   HOOK_FILE = content/[project-name]/hook.md (if exists)
    ```
 
----
+2. **Load and extract from analysis.md (PRIMARY CONTEXT SOURCE)**:
 
-### Step 2: Description Strategy Planning
+   **CRITICAL - This drives the entire SEO strategy**:
 
-Based on analysis, determine description approach:
+   - **Primary keywords**: Main search terms (will be featured in opening paragraph)
+   - **Secondary keywords**: Supporting terms (distributed naturally throughout)
+   - **Long-tail keywords**: Specific phrases (helps with niche search queries)
+   - **Video concept/vibe**: Educational, entertaining, professional, etc. (sets the tone)
+   - **Target audience**: Who this is for (influences language and approach)
+   - **Value propositions**: What viewers will gain (forms the hook)
+   - **Key themes and topics**: Main discussion points (informs content structure)
 
-#### SEO Priority Assessment
+   **If analysis.md not found**:
 
-**High SEO Priority** (Search-focused content):
-- Keyword density: 2-4 mentions of primary keyword
-- Keyword placement: Primary keyword in first 25 words
-- Long-tail phrases: Include 3-5 specific search phrases
-- Structured format: Clear sections with headers
+   - WARN: "No analysis.md found. SEO optimization will be severely limited. Strongly recommend running /yt.analyze first."
+   - Continue with generic description, but flag this to user
 
-**Medium SEO Priority** (Balanced):
-- Keyword density: 1-2 mentions of primary keyword
-- Natural integration: Keywords flow conversationally
-- Mixed content: Both searchable and engaging elements
+3. **Verify and read subtitle track**:
 
-**Low SEO Priority** (Browse-focused):
-- Keyword presence: Primary keyword mentioned once naturally
-- Focus: Engagement, personality, community building
-- Style: More conversational, less structured
+   - Search in `content/[project-name]/references/` for .srt or .vtt files
+   - If not found: ERROR: "No subtitle file found in references folder. Please add a .srt or .vtt file with timestamps."
 
-#### Tone and Style Mapping
+   **Parse subtitle content**:
 
-From content vibe:
-- **Educational**: Clear, organized, helpful
-- **Entertaining**: Casual, personality-driven, fun
-- **Professional**: Authoritative, data-backed, formal
-- **Inspirational**: Motivational, transformative, aspirational
+   - Extract timestamp entries (format: `00:00:00,000 --> 00:00:05,000`)
+   - Read text content for each timestamp segment
+   - Identify major topic changes and key discussion points
+   - Note important moments and transitions
+   - This data will be used ONLY for generating timestamps
 
----
+4. **Load supplementary context** (if available):
 
-### Step 3: Generate Primary Description (First 150 Characters)
+   **From Titles** (if exists):
 
-**CRITICAL SECTION**: This appears before "Show More" on mobile.
+   - Chosen or recommended title (ensures consistency)
+   - Title strategy (browse vs search focus)
 
-#### Primary Description Requirements:
+   **From Hook** (if exists):
 
-1. **Hook** (First 40 characters):
-   - Immediate value or intrigue
-   - Connect to title
-   - Create reason to keep reading/watching
-
-2. **Value Proposition** (Next 60 characters):
-   - What viewer will learn/gain
-   - Specific outcome or benefit
-   - Align with video promise
-
-3. **Call-to-Action or Credibility** (Remaining 50 characters):
-   - Encourage watching
-   - Establish authority
-   - Create urgency or excitement
-
-#### Primary Description Formula:
-
-```
-[Hook sentence that connects to title]. [What you'll learn/discover].
-[CTA or credibility statement].
-```
-
-**Character count target**: 150-200 characters
-
-#### Keyword Placement:
-
-Primary keyword should appear in first 25 words if content is search-focused.
+   - Opening value propositions
+   - Key engagement angles
 
 ---
 
-### Step 4: Generate Full Description Components
+### Step 2: Generate SEO Opening Paragraph (Analysis-Driven)
 
-#### Component 1: Opening Paragraph (200-300 characters)
+**Target**: 150-200 words that hook viewers and optimize for search
 
-Expand on primary description:
-- Elaborate on the problem or opportunity
-- Set context for the video
-- Include 1-2 primary keywords naturally
-- Create excitement or urgency
-- Establish relevance to target audience
+**Data Source**: Use analysis.md as the foundation for all content decisions
 
-#### Component 2: Content Overview with Timestamps
+**Requirements**:
 
-**Format**:
-```
-In this video, you'll discover:
-⏱️ 0:00 - [Section or topic 1]
-⏱️ X:XX - [Section or topic 2]
-⏱️ X:XX - [Section or topic 3]
-⏱️ X:XX - [Section or topic 4]
-⏱️ X:XX - [Section or topic 5]
-```
+1. **First 2-3 sentences** (visible before "Show More"):
 
-**Guidelines**:
-- Use emojis (⏱️ or 📌) for visual interest
-- Keep section descriptions concise (3-7 words)
-- Cover all major sections
-- Make it scannable
-- Include intro/outro if relevant
+   - Start with the **primary keyword** from analysis.md (ideally in first 25 words)
+   - Hook based on **value propositions** identified in analysis
+   - Match the **content vibe** (educational, entertaining, professional, etc.)
+   - Create interest and urgency using **key themes** from analysis
 
-**Following paragraph** (100-150 characters):
-- Reinforce value proposition
-- Include 2-3 secondary keywords naturally
-- Connect timestamps to viewer benefit
+2. **Body** (remaining content to reach ~200 words):
+   - Expand on the problem/opportunity using **target audience** context from analysis
+   - What viewers will learn (draw from **key topics** in analysis)
+   - Specific outcomes or benefits (use **value propositions**)
+   - Naturally integrate **2-3 secondary keywords** from analysis throughout
+   - Weave in **1-2 long-tail keywords** where they fit naturally
+   - Maintain the **tone and vibe** established in analysis
 
-#### Component 3: Key Takeaways
+**Keyword Integration Strategy** (from analysis.md):
 
-**Format**:
-```
-🎯 Key Takeaway 1: [Valuable insight or learning]
-🎯 Key Takeaway 2: [Valuable insight or learning]
-🎯 Key Takeaway 3: [Valuable insight or learning]
-```
+- **Primary keyword**: 1-2 mentions (first in opening sentences)
+- **Secondary keywords**: 1-2 mentions each (distributed naturally)
+- **Long-tail keywords**: 1 mention each (specific phrases that add value)
 
-**Following paragraph** (100-200 characters):
-- Additional context
-- Include long-tail keywords
-- Relate takeaways to viewer goals
+**Quality Check**:
 
-#### Component 4: Resources & Links
-
-**Format**:
-```
-📚 RESOURCES MENTIONED:
-- [Resource 1 name]: [URL]
-- [Resource 2 name]: [URL]
-- [Tool mentioned]: [URL]
-
-🔗 USEFUL LINKS:
-- [Related resource]: [URL]
-- [Additional tool]: [URL]
-- [Documentation]: [URL]
-```
-
-**Guidelines**:
-- Only include if relevant resources exist
-- Use descriptive link text
-- Group by type (resources vs additional links)
-- Keep it organized and scannable
-
-#### Component 5: About Section
-
-**Format**:
-```
-ABOUT [CHANNEL NAME]:
-[2-3 sentences about channel mission and expertise]
-[Authority indicators or achievements]
-
-Connect with me:
-• Website: [URL]
-• Twitter/X: [URL]
-• LinkedIn: [URL]
-• GitHub: [URL if relevant]
-```
-
-**Guidelines**:
-- Keep it brief (3-4 lines max)
-- Focus on credibility and mission
-- Only include active social channels
-- Use bullet points for readability
-
-#### Component 6: Calls-to-Action
-
-**Format**:
-```
-👍 If you found this helpful, give it a thumbs up!
-💬 Drop a comment with [specific question related to topic]
-🔔 Subscribe for more [content type] every [frequency]
-📢 Share this with someone who [would benefit]
-```
-
-**Guidelines**:
-- Be specific (not just "like and subscribe")
-- Give reason WHY they should engage
-- Make comment CTA specific to video
-- Focus on value exchange
-
-#### Component 7: Engagement Hook
-
-**Format**:
-```
-LEAVE A COMMENT:
-What's your biggest challenge with [topic]? Let me know below!
-
-COMMUNITY QUESTION:
-[Thought-provoking question that encourages discussion]
-```
-
-**Guidelines**:
-- Make it specific to video content
-- Encourage genuine conversation
-- Ask opinion or experience questions
-- Make it easy to answer
-
-#### Component 8: SEO Keywords Section
-
-**Format**:
-```
-[Natural paragraph that includes additional keywords and context]
-[Provides genuine additional value or summary]
-[Helps with discovery without keyword stuffing]
-
-Related topics: [Topic 1] | [Topic 2] | [Topic 3] | [Topic 4]
-```
-
-**Guidelines**:
-- Must be natural and valuable
-- NOT a list of keywords
-- Provides context or summary
-- Includes 3-5 related terms
-
-#### Component 9: Hashtags
-
-**Format**:
-```
-#[PrimaryKeyword] #[SecondaryKeyword] #[TrendingTopic]
-```
-
-**Guidelines**:
-- 3-5 hashtags maximum (YouTube considers first 3 most)
-- No spaces in multi-word hashtags
-- Relevant to content
-- Mix of broad and specific
-
-#### Component 10: Legal/Disclosure (if needed)
-
-**Format**:
-```
-DISCLOSURE:
-[Affiliate link disclosure if applicable]
-[Sponsorship disclosure if applicable]
-[Music/footage credits if applicable]
-
-[Copyright notice if applicable]
-```
+- Sounds conversational, not keyword-stuffed
+- Mobile-friendly (first 150 characters are compelling on their own)
+- Creates excitement to watch the video
+- Aligns with video concept and vibe from analysis
+- Keywords from analysis.md flow naturally in context
 
 ---
 
-### Step 5: Assemble Complete Description
+### Step 3: Generate Links Section
 
-1. **Combine all components** in order:
-   - Primary description (first 150 chars)
-   - Opening paragraph
-   - Content overview with timestamps
-   - Key takeaways
-   - Resources & links (if applicable)
-   - About section
-   - Calls-to-action
-   - Engagement hook
-   - SEO keywords section
-   - Hashtags
-   - Legal/disclosure (if needed)
-
-2. **Count total characters**: Must be under 5000
-
-3. **Verify keyword distribution**:
-   - Primary keyword: 2-4 times (search-focused) or 1-2 times (browse-focused)
-   - Secondary keywords: 1-2 times each
-   - Natural distribution throughout
-
-4. **Check readability**:
-   - Scannable structure with clear sections
-   - Proper spacing between sections
-   - Emoji use for visual interest (not overdone)
-   - Mobile-friendly formatting
-
----
-
-### Step 6: Generate Alternative Versions (Optional)
-
-Create 2-3 alternative description strategies:
-
-**Version A: SEO-Heavy**
-- More keyword density
-- Focus on search optimization
-- Structured and informational
-
-**Version B: Engagement-Heavy**
-- More conversational
-- Focus on community building
-- Personal and relatable
-
-**Version C: Conversion-Heavy**
-- Focus on specific CTA (course, product, service)
-- Clear value ladder
-- Strategic link placement
-
----
-
-### Step 7: Create Optimization Checklist
-
-Generate checklist for user to verify:
+**Structure** (using emojis for visual interest):
 
 ```
-- [ ] Primary keyword in first 25 words
-- [ ] 2-3 secondary keywords naturally placed
-- [ ] Timestamps included (if video >5 mins)
-- [ ] Links are relevant and working
-- [ ] Call-to-action is clear and specific
-- [ ] First 150 characters are compelling
-- [ ] Description adds value beyond video
-- [ ] Related terms and phrases included
-- [ ] Hashtags are relevant (3-5 max)
-- [ ] No keyword stuffing
-- [ ] Mobile-friendly formatting
-- [ ] Engagement question included
-- [ ] Total under 5000 characters
+🎁 [Sponsor/Affiliate Section Title]:
+[Product/Service Name]: [URL]
+[Coupon code or special offer if applicable]
+
+📚 [Resources Mentioned in Video]:
+[Resource 1]: [URL]
+[Resource 2]: [URL]
+
+💰 SUPPORT THE CHANNEL:
+☕ Buy me a coffee: [URL]
+💵 PayPal: [URL]
+
+🔗 CONNECT:
+📺 Subscribe for [content description]
+🐦 Follow on Twitter: [URL]
 ```
+
+**Guidelines**:
+
+- Only include links that are relevant (don't add placeholder links)
+- Use descriptive names for each link
+- Group by category with emoji headers
+- If user mentioned specific links in context, include those
+- Common categories: sponsor/affiliate, resources mentioned, support, social connections
 
 ---
 
-### Step 8: Generate Output Document
+### Step 4: Extract and Generate Timestamps
 
-1. **Load template**: Read `youtube/.youtube/templates/description-template.md`
+**Process**:
+
+1. **Parse subtitle file** (.srt or .vtt format)
+2. **Identify major topic changes** by analyzing:
+
+   - Content transitions in subtitle text
+   - Key phrases and discussion points
+   - Natural section breaks
+   - Important moments worth highlighting
+
+3. **Create descriptive labels** for each timestamp:
+
+   - Keep labels concise but descriptive (5-10 words)
+   - Focus on value/topic, not generic descriptions
+   - Make it scannable and useful for viewers
+   - Extract actual keywords from subtitle content
+
+4. **Format timestamps**:
+
+```
+⏱️ TIMESTAMPS:
+00:00 - [Descriptive label for intro/hook]
+01:15 - [Key topic or section 1]
+02:22 - [Important point or transition]
+03:00 - [Main content section]
+[Continue for all major points...]
+```
+
+**Quality Guidelines**:
+
+- Aim for 8-15 timestamps for a 15-25 minute video
+- Each timestamp should represent a meaningful topic change
+- Labels should be specific enough to help viewers navigate
+- Use the actual content from subtitles to inform labels
+
+---
+
+### Step 5: Generate Three Strategic Hashtags (Analysis-Driven)
+
+**Hashtag Strategy** (exactly 3 hashtags):
+
+1. **Video-Specific Hashtag**:
+
+   - Use the **primary keyword** from analysis.md
+   - This should be THE most important keyword for this specific video
+   - Convert to hashtag format (no spaces, camelCase or lowercase)
+   - Examples: #claudecode, #n8nautomation, #agenticworkflows
+   - Source: Primary keyword from analysis.md
+
+2. **Industry-Specific Hashtag**:
+
+   - Use a **secondary keyword** from analysis.md that represents the broader category
+   - Helps reach audience interested in the general field
+   - Examples: #ai, #automation, #productivity, #webdev
+   - Source: Secondary keywords or industry category from analysis.md
+
+3. **Broad Appeal Hashtag**:
+   - Very general topic that attracts wider audience
+   - Should still be relevant but has mass appeal
+   - Can be derived from **target audience** or broader **content themes** in analysis
+   - Examples: #tech, #coding, #tutorial, #howto
+   - Source: General category or audience type from analysis.md
+
+**Format**:
+
+```
+#videospecific #industryspecific #broadappeal
+```
+
+**Quality Check**:
+
+- All hashtags derived from analysis.md keywords/themes
+- No spaces in multi-word hashtags (use camelCase or lowercase)
+- All three hashtags are genuinely relevant to content
+- Mix of specificity levels (narrow → medium → broad)
+
+---
+
+### Step 6: Assemble Complete Description
+
+**Final Structure**:
+
+```
+[SEO Opening Paragraph - 150-200 words]
+
+[Links Section with emojis and organized categories]
+
+[Timestamps Section with ⏱️ emoji header]
+
+[Three Strategic Hashtags]
+```
+
+**Final Checks**:
+
+1. Total character count under 5000
+2. First 150 characters are compelling (mobile test)
+3. Keywords appear naturally (no stuffing)
+4. All links are properly formatted
+5. Timestamps are accurate and descriptive
+6. Three hashtags follow the strategy
+
+---
+
+### Step 7: Generate Output Document
+
+1. **Load template**: Read `.youtube/templates/description-template.md`
 
 2. **Fill template** with:
+
    - Complete formatted description (copy-ready)
-   - All individual components
-   - Alternative versions (if generated)
-   - Optimization checklist (completed)
-   - SEO analysis
-   - Performance optimization notes
+   - SEO opening paragraph
+   - Links section
+   - Timestamps
+   - Hashtags
+   - Character count stats
 
-3. **Write to output file**: `youtube/content/[project-name]/description.md`
-
-4. **Update memory**: Add description data to memory JSON:
-   ```json
-   {
-     ...existing data,
-     "description_created": "[date]",
-     "character_count": [number],
-     "keyword_density": {
-       "primary": [count],
-       "secondary": [count]
-     }
-   }
-   ```
+3. **Write to output file**: `content/[project-name]/description.md`
 
 ---
 
-### Step 9: Report Completion
+### Step 8: Report Completion
 
 Provide user with:
 
@@ -444,102 +331,96 @@ Provide user with:
 2. **Output Location**: Full path to description.md
 
 3. **Quick Stats**:
-   - Total character count (X / 5000)
-   - Primary keyword mentions: [X]
-   - Sections included: [list]
 
-4. **Preview**: Show first 150 characters (the critical above-the-fold content)
+   - Total character count (X / 5000)
+   - Number of timestamps generated
+   - Hashtags used
+
+4. **Preview**: Show the complete copy-ready description
 
 5. **Next Steps**:
    ```
-   Copy description to YouTube, then:
-   • Run /yt.tags to generate optimized tags
-   • Review all content (analysis, hook, titles, description) for consistency
+   ✅ Copy description to YouTube Studio
+   📋 Verify all links are working
+   ⏱️ Confirm timestamps match video
+   🏷️ Consider running /yt.tags for optimized video tags
    ```
 
 ---
 
 ## Description Writing Guidelines
 
-### Above-the-Fold Strategy
+### SEO Opening Paragraph Best Practices
 
-The first 2-3 lines are EVERYTHING for mobile users:
+**GOOD Opening** ✅:
 
-**BAD** ❌:
+```
+Discover how to supercharge your Claude Code workflows by integrating custom
+hooks with N8N automation. Learn to receive instant Telegram notifications
+when your AI agent completes tasks or requires approval, perfect for
+long-running agentic coding processes. This comprehensive tutorial covers
+setting up Claude Code hooks, creating Python scripts, configuring N8N
+workflows, and integrating Telegram bots for real-time updates on any device.
+```
+
+**BAD Opening** ❌:
+
 ```
 Hey everyone! In today's video, we're going to be talking about something
-really cool that I think you'll find interesting...
+really cool about Claude Code and N8N that I think you'll find interesting...
 ```
 
-**GOOD** ✅:
-```
-Spending hours on repetitive code? This automation workflow cuts that time
-by 80%. Here's exactly how to set it up in 15 minutes.
-```
+**Key Differences**:
 
----
-
-### Keyword Integration Best Practices
-
-**Natural Integration** ✅:
-```
-"If you're learning Claude Code for the first time, this tutorial walks you
-through the essential automation features that save the most time."
-```
-
-**Keyword Stuffing** ❌:
-```
-"Claude Code Claude Code automation tutorial. Learn Claude Code. Best Claude
-Code tutorial. Claude Code tips."
-```
+- Good: Immediate value, specific outcomes, natural keywords
+- Bad: Generic greeting, vague promise, no keywords
 
 ---
 
-### Timestamp Strategy
+### Timestamp Guidelines
 
 **Effective Timestamps** ✅:
+
 ```
-⏱️ 0:00 - Why automation matters
-⏱️ 2:15 - Setup and installation
-⏱️ 5:30 - First automation example
-⏱️ 9:45 - Advanced techniques
-⏱️ 14:20 - Common mistakes to avoid
+⏱️ TIMESTAMPS:
+00:00 - Introduction to Claude Code hooks and their potential
+01:15 - Understanding hook events and when they trigger
+02:22 - Why this solution matters for long running agentic tasks
+03:00 - Setting up your first hook in Claude Code
 ```
 
 **Poor Timestamps** ❌:
+
 ```
 0:00 Intro
 5:00 Main content
 15:00 Outro
 ```
 
-Make them descriptive and valuable!
+**Extract from subtitles**: Use the actual content to create descriptive, valuable labels
 
 ---
 
-### Call-to-Action Effectiveness
+### Hashtag Strategy
 
-**Specific and Value-Focused** ✅:
-```
-💬 Drop a comment with your biggest automation challenge - I read and
-respond to every one!
-```
+**GOOD Hashtag Selection** ✅:
 
-**Generic and Pushy** ❌:
 ```
-Like and subscribe!!! Please!!! Click the bell!!!
+#claudecode #n8n #agenticai
 ```
 
----
+- Video-specific: #claudecode (main topic)
+- Industry-specific: #n8n (automation niche)
+- Broad appeal: #agenticai (wider AI audience)
 
-### Mobile Formatting
+**BAD Hashtag Selection** ❌:
 
-Use these techniques for mobile readability:
-- Short paragraphs (2-3 lines max)
-- Emoji for visual breaks and section markers
-- Clear spacing between sections
-- Bullet points or numbered lists
-- All caps for section headers (sparingly)
+```
+#tutorial #video #howto
+```
+
+- Too generic, doesn't reflect actual content
+- No specificity for targeting right audience
 
 ---
 
@@ -547,18 +428,16 @@ Use these techniques for mobile readability:
 
 Before reporting completion, verify:
 
-- [ ] First 150 characters are compelling
-- [ ] Primary keyword appears in first 25 words (if search-focused)
+- [ ] SEO paragraph is 150-200 words
+- [ ] First 150 characters are compelling (mobile test)
+- [ ] Primary keyword in first 25 words (if search-focused)
+- [ ] Links section organized with emoji headers
+- [ ] Timestamps extracted from subtitle file
+- [ ] Timestamp labels are descriptive (not generic)
+- [ ] Exactly 3 hashtags following the strategy
 - [ ] Total character count under 5000
-- [ ] Timestamps included (if relevant)
-- [ ] At least 3 calls-to-action
-- [ ] Engagement question included
-- [ ] Links formatted correctly
-- [ ] Hashtags relevant (3-5 max)
 - [ ] No keyword stuffing
-- [ ] About section included
-- [ ] Mobile-friendly formatting
-- [ ] SEO optimization checklist completed
+- [ ] Mobile-friendly formatting with proper spacing
 - [ ] Output file created successfully
 
 **If any validation fails**: Revise the relevant section before completion.
@@ -567,25 +446,15 @@ Before reporting completion, verify:
 
 ## Error Handling
 
-### No Analysis Found
-```
-ERROR: "No analysis found. Please run /yt.analyze first to generate the
-required analysis with keywords for this project."
-```
+### No Subtitle File Found
 
-### Missing Keywords in Analysis
 ```
-WARN: "Analysis is missing keyword data. Generating description with
-available information, but SEO optimization may be limited."
-```
-
-### Character Count Exceeded
-```
-WARN: "Generated description exceeds 5000 characters. Trimming optional
-sections to fit within limit."
+ERROR: "No subtitle file found in content/[project-name]/references/
+Please add a .srt or .vtt subtitle file to extract timestamps."
 ```
 
 ### Multiple Projects, No Specification
+
 ```
 Available projects:
 1. project-name-1
@@ -594,81 +463,79 @@ Available projects:
 Please specify which project: /yt.description project-name-1
 ```
 
+### Missing Analysis File (Strong Warning)
+
+```
+⚠️ WARNING: "No analysis.md found for this project!
+
+The analysis file is CRITICAL for generating an optimized description. Without it:
+- No keyword optimization (primary, secondary, long-tail)
+- No content vibe/tone guidance
+- No target audience context
+- Generic hashtags without strategic focus
+
+STRONGLY RECOMMENDED: Run /yt.analyze first, then return to /yt.description
+
+Proceeding with limited optimization based on available content..."
+```
+
 ---
 
-## Examples
+## Example Output
 
-### Example Analysis Context:
-```
-Primary Keywords: "Claude Code tutorial", "AI coding automation"
-Secondary Keywords: "developer productivity", "code generation"
-Target Audience: Professional developers, intermediate level
-Content Vibe: Educational, practical
-Video Length: 12 minutes
-```
-
-### Generated Description Example:
+### Sample Description (Based on your provided example):
 
 ```
-Stop wasting hours on repetitive code. This Claude Code tutorial shows you
-5 automations that save 15+ hours per week. Ready to code smarter?
+Discover how to supercharge your Claude Code workflows by integrating custom hooks with N8N automation. Learn to receive instant Telegram notifications when your AI agent completes tasks or requires approval, perfect for long-running agentic coding processes. This comprehensive tutorial covers setting up Claude Code hooks, creating Python scripts, configuring N8N workflows, and integrating Telegram bots for real-time updates on any device.
 
-In this video, you'll discover the exact automation workflows I use daily
-to eliminate boilerplate code, generate API endpoints, and streamline my
-entire development process. Whether you're new to AI coding assistants or
-looking to level up your productivity, these practical examples will
-transform your workflow.
+🎁 Get Hostinger VPS (Black Friday Deal):
+https://hostinger.com/leon
+Coupon Code: LEON (Additional 10% off)
 
-⏱️ 0:00 - Why automation is a game-changer
-⏱️ 2:15 - Setting up Claude Code
-⏱️ 4:30 - Automation #1: API endpoint generation
-⏱️ 6:45 - Automation #2: Database schema creation
-⏱️ 9:00 - Automation #3: Test file scaffolding
-⏱️ 11:15 - Automation #4: Documentation generation
-⏱️ 13:30 - Automation #5: Code refactoring workflows
+🔍 Try N8N Cloud (Free Trial):
+https://n8n.partnerlinks.io/f7f19w3vrhin
 
-These aren't just theoretical examples - these are the exact automations
-I use in production code every day. By the end, you'll have 5 practical
-workflows you can implement immediately.
+🎙️ Voice to Text Software (Wispr Flow):
+https://wisprflow.ai/r?LEON114
 
-🎯 Key Takeaway 1: Automation saves time and reduces human error
-🎯 Key Takeaway 2: Start with repetitive tasks for biggest impact
-🎯 Key Takeaway 3: AI coding assistants excel at pattern-based code
+📚 Claude Code Hooks Documentation:
+https://docs.claude.com/en/docs/claude-code/hooks-guide
 
-📚 RESOURCES MENTIONED:
-- Claude Code Documentation: [URL]
-- Example GitHub Repository: [URL]
-- Automation Templates: [URL]
+📺 Complete N8N Masterclass:
+https://youtu.be/CfD17vBCPEU
 
-ABOUT MY CHANNEL:
-I create practical coding tutorials focused on developer productivity and
-modern AI tools. 10+ years of professional development experience.
+💰 SUPPORT THE CHANNEL:
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
 
-Connect with me:
-• Website: [URL]
-• Twitter: [URL]
-• GitHub: [URL]
+🔗 CONNECT:
+📺 Subscribe for weekly AI automation tutorials
+🐦 Follow on Twitter: https://x.com/leonvz
 
-👍 If this saved you time, give it a thumbs up!
-💬 Drop a comment: What's your biggest coding time-waster?
-🔔 Subscribe for weekly productivity and AI coding tutorials
-📢 Share with a developer who's tired of repetitive work
+⏱️ TIMESTAMPS:
+00:00 - Introduction to Claude Code hooks and their potential
+01:15 - Understanding hook events and when they trigger
+02:22 - Why this solution matters for long running agentic tasks
+03:00 - Setting up your first hook in Claude Code
+04:33 - Creating Python scripts for hook commands
+06:26 - Using Claude Code to debug hook inputs
+08:33 - Extracting the agents last message from transcripts
+11:31 - Setting up N8N in the cloud with Hostinger
+14:31 - Creating your first N8N workflow and Telegram bot
+16:46 - Configuring webhook integration between Claude Code and N8N
+20:00 - Testing the complete notification system
+22:22 - Adding notification hooks for approval requests
 
-LEAVE A COMMENT:
-What automation would save YOU the most time? Let me know and I might
-cover it in the next video!
-
-This tutorial covers AI coding automation, developer productivity tools,
-and practical Claude Code workflows that work in real-world projects.
-Perfect for developers looking to eliminate repetitive tasks and focus
-on creative problem-solving.
-
-Related topics: Developer Productivity | AI Coding Tools | Workflow Automation | Code Generation
-
-#ClaudeCode #CodingAutomation #DeveloperProductivity
+#claudecode #n8n #agenticai
 ```
 
-**Character Count**: 2,147 / 5000
+**Character Count**: 1,847 / 5000
+
+**Hashtag Breakdown**:
+
+- #claudecode - Video-specific (main topic of the tutorial)
+- #n8n - Industry-specific (automation platform niche)
+- #agenticai - Broad appeal (wider AI/automation audience)
 
 ---
 

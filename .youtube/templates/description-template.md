@@ -1,229 +1,151 @@
 # Video Description: [VIDEO TITLE]
 
 **Created**: [DATE]
-**Based on Analysis**: [Link to analysis.md]
-**Character Count**: [Total characters - YouTube allows 5000]
+**Character Count**: [Total] / 5000
+**Project**: [project-name]
 
 ---
 
-## Primary Description
-*First 2-3 lines visible before "Show More" - CRITICAL for SEO and engagement*
+## Copy-Ready Description
 
 ```
-[First line: Hook that complements title and creates interest]
-[Second line: What viewers will learn/gain]
-[Third line: Call-to-action or credibility statement]
-```
+[PASTE THIS DIRECTLY INTO YOUTUBE STUDIO]
 
-**Character Count**: [X] (Aim for 150-200 for mobile visibility)
+[SEO Opening Paragraph - 150-200 words]
 
----
+[Links Section - Organized with emojis]
 
-## Full Description
+[Timestamps Section - Extracted from subtitles]
 
-### Opening Section (Visible without expanding)
-
-```
-[Expanded version of primary description]
-[Include 1-2 primary keywords naturally]
-[Create urgency or excitement]
-[Direct connection to title promise]
+[Three Strategic Hashtags]
 ```
 
 ---
 
-### Content Overview
+## Components Breakdown
+
+### 1. SEO Opening Paragraph
+
+**Word Count**: [X words] (Target: 150-200)
 
 ```
-In this video, you'll discover:
-⏱️ [Timestamp 0:00] - [Topic/section 1]
-⏱️ [Timestamp X:XX] - [Topic/section 2]
-⏱️ [Timestamp X:XX] - [Topic/section 3]
-⏱️ [Timestamp X:XX] - [Topic/section 4]
-⏱️ [Timestamp X:XX] - [Topic/section 5]
+[The opening paragraph that hooks viewers and includes natural keyword integration.
+First 150 characters should be compelling for mobile users.]
+```
 
-[Brief paragraph expanding on value proposition]
-[Include 2-3 secondary keywords naturally]
+**Keywords Used**:
+- Primary: [keyword] - [X mentions]
+- Secondary: [keyword1], [keyword2] - naturally integrated
+
+---
+
+### 2. Links Section
+
+```
+[Organized by category with emoji headers]
+
+🎁 [SPONSOR/AFFILIATE SECTION]:
+[Product/Service Name]: [URL]
+[Coupon code if applicable]
+
+📚 [RESOURCES MENTIONED]:
+[Resource 1]: [URL]
+[Resource 2]: [URL]
+
+💰 SUPPORT THE CHANNEL:
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
+
+🔗 CONNECT:
+📺 Subscribe for weekly AI automation tutorials
+🐦 Follow on Twitter: https://x.com/leonvz
 ```
 
 ---
 
-### Key Takeaways
+### 3. Timestamps
+
+**Extracted From**: [subtitle-file.srt/vtt]
+**Total Timestamps**: [X]
 
 ```
-🎯 Key Takeaway 1: [Valuable insight]
-🎯 Key Takeaway 2: [Valuable insight]
-🎯 Key Takeaway 3: [Valuable insight]
-
-[Additional context paragraph with keywords]
+⏱️ TIMESTAMPS:
+00:00 - [Descriptive label]
+01:15 - [Key topic or section]
+02:22 - [Important point]
+[Continue for all major points...]
 ```
+
+**Notes**: Timestamps extracted from subtitle track by identifying topic changes and key discussion points.
 
 ---
 
-### Resources & Links
+### 4. Hashtags
 
 ```
-📚 RESOURCES MENTIONED:
-- [Resource 1 name]: [URL]
-- [Resource 2 name]: [URL]
-- [Resource 3 name]: [URL]
-
-🔗 USEFUL LINKS:
-- [Related resource]: [URL]
-- [Tool mentioned]: [URL]
+#[videospecific] #[industryspecific] #[broadappeal]
 ```
+
+**Strategy**:
+- **#[videospecific]** - Video-specific (main topic/keyword from video)
+- **#[industryspecific]** - Industry-specific (broader category/niche)
+- **#[broadappeal]** - Broad appeal (reaches wider audience)
 
 ---
 
-### About Section
+## Validation Checklist
 
-```
-ABOUT [CHANNEL NAME]:
-[2-3 sentences about channel mission/expertise]
-[Include authority indicators]
-
-Connect with me:
-• Website: [URL]
-• Twitter: [URL]
-• LinkedIn: [URL]
-• Instagram: [URL]
-```
-
----
-
-### Call-to-Actions
-
-```
-👍 If you found this helpful, give it a thumbs up!
-💬 Drop a comment with [specific question related to topic]
-🔔 Subscribe for more [content type] every [frequency]
-📢 Share this with someone who [target benefit]
-```
-
----
-
-### Engagement Hooks
-
-```
-LEAVE A COMMENT:
-What's your biggest challenge with [topic]? Let me know below!
-
-COMMUNITY QUESTION:
-[Thought-provoking question that encourages discussion]
-```
-
----
-
-### SEO Keywords Section
-*Naturally incorporated throughout, not keyword stuffing*
-
-```
-Additional information for search:
-[Paragraph with long-tail keywords and related terms]
-[Natural language, not list of keywords]
-[Provides genuine additional value]
-
-Related topics: [Topic 1] | [Topic 2] | [Topic 3] | [Topic 4]
-```
-
----
-
-### Legal/Disclosure (if applicable)
-
-```
-DISCLOSURE:
-[Affiliate links, sponsorship, or other required disclosures]
-
-[Copyright or usage notices if applicable]
-```
-
----
-
-### Hashtags
-*Strategic placement - YouTube considers first 3 most important*
-
-```
-#[PrimaryKeyword] #[SecondaryKeyword] #[TrendingTopic]
-```
-
----
-
-## Complete Formatted Description
-
-```
-[COPY-READY VERSION - Paste directly into YouTube]
-
-[Opening paragraph - First 2-3 lines]
-
-[Content Overview with timestamps]
-
-[Key Takeaways section]
-
-[Resources & Links]
-
-[About section]
-
-[Call-to-Actions]
-
-[Engagement hooks]
-
-[SEO paragraph]
-
-[Legal/Disclosure if needed]
-
-[Hashtags]
-
-```
-
-**Total Character Count**: [X / 5000]
-
----
-
-## SEO Optimization Checklist
-
+- [ ] SEO paragraph is 150-200 words
+- [ ] First 150 characters are compelling (mobile test)
 - [ ] Primary keyword in first 25 words
-- [ ] 2-3 secondary keywords naturally placed
-- [ ] Timestamps included (helps with suggested clips)
-- [ ] Links are relevant and working
-- [ ] Call-to-action is clear and specific
-- [ ] First 150 characters are compelling
-- [ ] Description adds value beyond video
-- [ ] Related terms and phrases included
-- [ ] Hashtags are relevant (3-5 max)
+- [ ] Links organized with emoji headers
+- [ ] All links are properly formatted
+- [ ] Timestamps extracted from subtitle file
+- [ ] Timestamp labels are descriptive (not generic "intro", "main content")
+- [ ] Exactly 3 hashtags following strategy
+- [ ] Total character count under 5000
 - [ ] No keyword stuffing
-- [ ] Mobile-friendly formatting
-- [ ] Engagement question included
+- [ ] Mobile-friendly formatting with proper spacing
 
 ---
 
-## Performance Optimization
+## SEO Analysis
 
-### Above the Fold Strategy
-[How the first 2-3 lines work with title and thumbnail]
+**Primary Keyword**: [keyword]
+- Mentions: [X]
+- First appearance: [Character/word position]
+- Distribution: [Natural/Balanced/etc]
 
-### Keyword Density
-- Primary keyword: [X times - aim for 2-4]
-- Secondary keywords: [X times - aim for 1-2 each]
-- Natural distribution: [Yes/No - never force]
+**Secondary Keywords**: [keyword1, keyword2, keyword3]
+- Naturally integrated throughout
+
+**Target Audience**: [audience description]
+
+**Content Focus**: [Search/Browse/Balanced]
+
+---
+
+## Performance Notes
+
+### Mobile Optimization
+- First 150 characters: ✅ Compelling and clear
+- Above-the-fold content: ✅ Strong value proposition
+
+### Timestamp Strategy
+- Total timestamps: [X]
+- Average spacing: [X minutes]
+- Labels: Descriptive and valuable for navigation
 
 ### Link Strategy
-[Which links to prioritize based on campaign goals]
-
----
-
-## Alternative Versions
-
-### Version A: SEO-Focused
-[More keyword-heavy, targets search traffic]
-
-### Version B: Engagement-Focused
-[More conversational, targets community building]
-
-### Version C: Conversion-Focused
-[Optimized for specific call-to-action like product/service]
+- Sponsor/Affiliate links: [X]
+- Resource links: [X]
+- Social/Support links: [X]
 
 ---
 
 **Created**: [DATE]
-**Ready for Upload**: [Yes/No]
-**Notes**: [Any additional context, A/B test plans, or considerations]
+**Ready for Upload**: Yes
+**Source Files Used**:
+- [analysis.md] (if exists)
+- [subtitles.srt/vtt]
+- [titles.md] (if exists)

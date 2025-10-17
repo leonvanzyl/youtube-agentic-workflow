@@ -8,7 +8,7 @@ description: Generate engaging hook and intro scripts based on reference materia
 $ARGUMENTS
 ```
 
-You **MUST** use the reference material provided in the user input above to generate hooks and intro scripts.
+You **MUST** use the reference material from the project's reference folder to generate hooks and intro scripts.
 
 ---
 
@@ -27,7 +27,7 @@ The output provides producers/creators with ready-to-use scripts they can perfor
 
 ## Operating Constraints
 
-**REFERENCE MATERIAL REQUIRED**: User must provide reference material in $ARGUMENTS (marketing docs, announcements, quick start guides, feature descriptions, etc.)
+**REFERENCE MATERIAL REQUIRED**: Project must have reference materials in `content/[project-name]/references/` folder (created by `/yt.init`).
 
 **PRE-VIDEO GENERATION**: This command is designed for use BEFORE video creation. The hook/intro will guide the video production.
 
@@ -47,29 +47,115 @@ The output provides producers/creators with ready-to-use scripts they can perfor
 
 ### Expected Input Format
 
-User should provide reference material as arguments:
+User should provide only the project name:
 
 ```
-/yt.hook [project-name] [reference material or description]
+/yt.hook [project-name]
 ```
 
 **Examples:**
-- `/yt.hook ai-plugin "New AI plugin announcement: Allows developers to build AI-powered workflows..."`
-- `/yt.hook feature-launch "Quick start guide: Our new feature enables real-time collaboration..."`
+- `/yt.hook claude-code-plugins`
+- `/yt.hook react-hooks-tutorial`
+- `/yt.hook nextjs-15-features`
 
 ### Parsing Arguments
 
-1. **First word**: Treat as project name
-2. **Remaining text**: Treat as reference material
-3. **If no arguments**: Ask user to provide project name and reference material
+1. **If arguments provided**: Use full argument string as project name
+2. **If no arguments**: Check for current project in manifest
+   - Look for `content/.project-state.json`
+   - If manifest exists and has `currentProject`, use that
+   - If no manifest or no current project: Ask user to provide project name
+3. **Validate**: Check that project folder exists at `content/[project-name]/`
 
 ---
 
 ## Execution Steps
 
+### Step 0: Load Reference Materials from Project Folder
+
+Before analyzing content, gather all reference materials from the project folder:
+
+1. **Determine project name**:
+   - **If $ARGUMENTS is not empty**:
+     - Trim whitespace from $ARGUMENTS
+     - Convert to kebab-case if needed
+     - Store as `[project-name]`
+   - **If $ARGUMENTS is empty**:
+     - Check if `content/.project-state.json` exists using Read tool
+     - If file exists:
+       - Parse JSON to get `currentProject` field
+       - If `currentProject` exists: Use it as `[project-name]`
+       - If `currentProject` is null/empty: Show error (no project specified)
+     - If file doesn't exist: Show error (no project specified)
+   - **Report which project is being used**:
+     ```
+     Using project: [project-name]
+     ```
+
+2. **Validate project structure**:
+   - Check if `content/[project-name]/` exists
+   - Check if `content/[project-name]/references/` exists
+   - If project folder doesn't exist: Show error (see Error Handling section)
+   - If reference folder doesn't exist: Show error (see Error Handling section)
+
+3. **Scan reference folder for all files**:
+   - Use Glob tool to find all files: `content/[project-name]/references/**/*`
+   - Filter for readable file types:
+     - Text files: `.txt`, `.md`, `.markdown`
+     - Documentation: `.pdf` (if readable)
+     - Subtitles: `.srt`, `.vtt`, `.sbv`
+     - Code/Config: `.json`, `.yaml`, `.yml`
+     - Web content: `.html`, `.htm`
+   - Ignore binary files, images, videos unless they contain extractable text
+
+4. **Read all reference files**:
+   - Use Read tool to load content from each file
+   - For each file, note:
+     - Filename
+     - File type
+     - Content length
+     - Key topics (quick scan)
+
+5. **Combine reference materials**:
+   - Concatenate all file contents
+   - Add file separators for clarity:
+     ```
+     === FILE: [filename] ===
+     [file content]
+
+     ```
+   - Store combined content as `$REFERENCE_MATERIAL`
+
+6. **Validate reference material quality**:
+   - Check total character count
+   - If less than 100 characters: Show warning about insufficient material
+   - If no files found: Show error (see Error Handling section)
+   - Report to user:
+     - Number of files found
+     - Total content size
+     - File types detected
+
+7. **Summary output** (inform user):
+   ```
+   ✓ Loaded reference materials from content/[project-name]/references/
+
+   Files processed:
+   • [filename1] ([size])
+   • [filename2] ([size])
+   • [filename3] ([size])
+
+   Total: [X] files, [Y] characters
+
+   Now analyzing reference materials to generate hooks...
+   ```
+
+**CRITICAL**: If this step fails, DO NOT proceed to hook generation. The reference material is essential for creating relevant, accurate hooks.
+
+---
+
 ### Step 1: Parse and Extract Key Information
 
-From the provided reference material, extract:
+From the loaded reference material (`$REFERENCE_MATERIAL` from Step 0), extract:
 
 **Topic/Product Information**:
 - What is being announced/taught/demonstrated?
@@ -428,31 +514,134 @@ Before reporting completion, verify:
 
 ## Error Handling
 
-### No Arguments Provided
+### No Arguments Provided and No Current Project
 ```
-ERROR: "Please provide project name and reference material.
+ERROR: No project specified and no current project found.
 
-Usage: /yt.hook [project-name] [reference material]
+Usage: /yt.hook [project-name]
 
-Example:
-/yt.hook my-video "Product announcement: New AI feature that automates..."
+Or run without arguments to use the current project (set by /yt.init).
+
+The command will automatically load reference materials from:
+content/[project-name]/references/
+
+Examples:
+  /yt.hook claude-code-plugins
+  /yt.hook react-hooks-tutorial
+  /yt.hook    (uses current project from last /yt.init)
+
+If you haven't created a project yet, run:
+  /yt.init [video topic description]
+
+This will create the project structure and set it as your current project.
+```
+
+### Project Folder Doesn't Exist
+```
+ERROR: Project folder not found.
+
+Looking for: content/[project-name]/
+
+The project "[project-name]" does not exist. Did you run the init command first?
+
+To create this project:
+  /yt.init [video topic description]
+
+To see existing projects, check the content/ folder.
+```
+
+### Reference Folder Doesn't Exist
+```
+ERROR: Reference folder not found.
+
+Looking for: content/[project-name]/references/
+
+The project folder exists, but the references subfolder is missing.
+This usually means the project structure is incomplete.
+
+Please create the references folder and add your materials:
+  content/[project-name]/references/
+
+Or reinitialize the project:
+  /yt.init [video topic description]
+```
+
+### No Reference Files Found
+```
+ERROR: No reference materials found in content/[project-name]/references/
+
+The references folder is empty. Please add reference materials before generating hooks.
+
+Supported file types:
+• Text files: .txt, .md, .markdown
+• Documentation: .pdf
+• Subtitles: .srt, .vtt, .sbv
+• Code/Config: .json, .yaml, .yml
+• Web content: .html, .htm
+
+Copy your reference materials (product docs, announcements, guides, etc.) to:
+content/[project-name]/references/
+
+Then run this command again.
 ```
 
 ### Insufficient Reference Material
-If reference material is too brief:
+If reference material is too brief (less than 100 characters):
 ```
-WARN: "Limited reference material provided. Generating hooks with available
-information, but results may be more generic. Consider providing more context
-about the topic, target audience, and key benefits."
+WARN: Limited reference material found ([X] characters total).
+
+Files found:
+• [list of files with sizes]
+
+The hook generator works best with comprehensive reference materials.
+Consider adding more context:
+• Product documentation
+• Feature descriptions
+• Target audience information
+• Marketing materials
+• Use cases or examples
+
+Generating hooks with available information, but results may be more generic.
+
+Continue anyway? (y/n)
 ```
 
 ---
 
 ## Example Usage
 
-### User Input:
+### Scenario Setup:
+
+**Step 1: User initializes project**
 ```
-/yt.hook claude-plugins "Claude Code Plugin Marketplace launch - developers can now build and share custom plugins for Claude Code. Key features: shadcn/ui integration, custom slash commands, MCP server support, automatic documentation. Target audience: TypeScript developers who want to extend their AI workflow. Pain point: repetitive tasks and limited customization in AI coding tools."
+/yt.init Claude Code plugins marketplace tutorial
+```
+
+**Step 2: User adds reference materials to `content/claude-code-plugins/references/`:**
+- `product-announcement.md` - Official launch announcement
+- `quick-start-guide.md` - Getting started documentation
+- `features.txt` - Key features list
+- `target-audience-notes.md` - Developer persona research
+
+**Step 3: User runs hook command**
+```
+/yt.hook claude-code-plugins
+```
+
+### Agent Response:
+
+```
+✓ Loaded reference materials from content/claude-code-plugins/references/
+
+Files processed:
+• product-announcement.md (2,341 characters)
+• quick-start-guide.md (4,128 characters)
+• features.txt (892 characters)
+• target-audience-notes.md (1,567 characters)
+
+Total: 4 files, 8,928 characters
+
+Now analyzing reference materials to generate hooks...
 ```
 
 ### Generated Hook Example (Problem/Pain Point):

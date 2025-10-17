@@ -292,7 +292,7 @@ basics quickly."
 ## Folder Structure
 
 ```
-youtube/
+project-root/
 ├── .claude/
 │   └── commands/           # Command definitions
 │       ├── yt.analyze.md

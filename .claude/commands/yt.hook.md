@@ -1,5 +1,5 @@
 ---
-description: Generate engaging hook and intro scripts based on video analysis
+description: Generate engaging hook and intro scripts based on reference material
 ---
 
 ## User Input
@@ -8,7 +8,7 @@ description: Generate engaging hook and intro scripts based on video analysis
 $ARGUMENTS
 ```
 
-You **MUST** consider the user input before proceeding (if not empty).
+You **MUST** use the reference material provided in the user input above to generate hooks and intro scripts.
 
 ---
 
@@ -16,18 +16,20 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Create multiple hook and intro script options that:
 - Capture attention in the first 3-5 seconds
-- Match the video's tone and target audience
+- Match the video's intended tone and target audience
 - Create curiosity or urgency to keep watching
 - Smoothly transition into the main content
-- Align with the analysis insights and competitive research
+- Align with the reference material insights
 
-The output provides producers/creators with ready-to-use scripts they can perform on camera.
+The output provides producers/creators with ready-to-use scripts they can perform on camera **before** creating the video.
 
 ---
 
 ## Operating Constraints
 
-**ANALYSIS REQUIRED**: This command requires an existing analysis.md file. If user hasn't run `/yt.analyze` yet, prompt them to do so first.
+**REFERENCE MATERIAL REQUIRED**: User must provide reference material in $ARGUMENTS (marketing docs, announcements, quick start guides, feature descriptions, etc.)
+
+**PRE-VIDEO GENERATION**: This command is designed for use BEFORE video creation. The hook/intro will guide the video production.
 
 **MULTIPLE OPTIONS**: Generate at least 4 different hook approaches to give creators variety.
 
@@ -37,79 +39,89 @@ The output provides producers/creators with ready-to-use scripts they can perfor
 - Delivery notes where helpful
 - Visual suggestions
 
-**AUDIENCE ALIGNMENT**: Hook must match the audience sophistication level and content vibe from analysis.
+**AUDIENCE ALIGNMENT**: Infer target audience from reference material and match hook sophistication accordingly.
 
 ---
 
 ## Input Handling
 
-### With Project Name
-If user provides a project name: `$ARGUMENTS = "project-name"`
-- Use: `youtube/content/[project-name]/analysis.md`
+### Expected Input Format
 
-### Without Project Name
-If user provides no arguments:
-1. List available projects in `youtube/content/`
-2. If only one project exists, use it automatically
-3. If multiple exist, ask user to specify which project
+User should provide reference material as arguments:
 
-### With Additional Context
-If user provides context like: "make the hook more casual" or "focus on the transformation"
-- Use the most recent project (or prompt to specify)
-- Apply their directive to hook generation
+```
+/yt.hook [project-name] [reference material or description]
+```
+
+**Examples:**
+- `/yt.hook ai-plugin "New AI plugin announcement: Allows developers to build AI-powered workflows..."`
+- `/yt.hook feature-launch "Quick start guide: Our new feature enables real-time collaboration..."`
+
+### Parsing Arguments
+
+1. **First word**: Treat as project name
+2. **Remaining text**: Treat as reference material
+3. **If no arguments**: Ask user to provide project name and reference material
 
 ---
 
 ## Execution Steps
 
-### Step 1: Load Analysis Context
+### Step 1: Parse and Extract Key Information
 
-1. **Locate analysis file**:
-   ```
-   ANALYSIS_FILE = youtube/content/[project-name]/analysis.md
-   ```
+From the provided reference material, extract:
 
-2. **Read and extract key information**:
-   - Video topic and main message
-   - Target audience (demographics, pain points, goals)
-   - Content vibe (tone, energy, style)
-   - Hook opportunities identified in analysis
-   - Unique value proposition
-   - Primary keywords
-   - Competitive insights (what hooks worked for others)
+**Topic/Product Information**:
+- What is being announced/taught/demonstrated?
+- What are the main features or capabilities?
+- What problem does it solve?
 
-3. **If analysis file not found**:
-   ```
-   ERROR: "No analysis found for '[project-name]'. Please run /yt.analyze first."
-   ```
+**Target Audience** (infer if not explicit):
+- Who would benefit from this?
+- What's their likely skill level?
+- What pain points do they have?
+
+**Unique Value Proposition**:
+- What makes this different/special?
+- Why should someone care?
+- What transformation/outcome is promised?
+
+**Content Vibe** (infer from reference material tone):
+- Professional/Technical vs Casual/Conversational
+- Educational vs Entertaining vs Inspirational
+- Energy level (high-energy vs measured/calm)
+
+**Key Benefits/Features** (for content preview):
+- List 3-5 main points to cover in the video
+- Identify the most compelling hook opportunities
 
 ---
 
 ### Step 2: Hook Strategy Development
 
-Based on analysis, determine hook approaches that will work best:
+Based on reference material analysis, determine hook approaches that will work best:
 
 #### Hook Type Selection Criteria
 
 **Problem/Pain Point Hook** - Use when:
-- Analysis shows clear pain point in target audience
-- Video solves a specific problem
-- Audience is problem-aware
+- Reference material describes a problem being solved
+- Clear pain point exists for target audience
+- Problem is familiar/relatable
 
 **Bold Statement/Claim Hook** - Use when:
-- Video presents surprising insight
-- You have credibility or proof
-- Content challenges conventional thinking
+- Reference material presents surprising capability
+- Product/feature challenges conventional approach
+- There's a strong differentiator
 
 **Story/Scenario Hook** - Use when:
-- Content vibe is conversational/casual
-- Emotional connection is important
-- Relatability drives engagement
+- Reference material includes use cases or examples
+- Relatability will drive engagement
+- Content suits conversational tone
 
 **Question/Challenge Hook** - Use when:
 - Audience needs to self-identify with problem
-- Creating self-reflection increases engagement
 - Topic involves decision-making
+- Creating self-reflection increases engagement
 
 **Always Generate**: At least one option of each type (4 hooks minimum)
 
@@ -142,7 +154,7 @@ For EACH hook type, create:
 
 Each hook must:
 - [ ] Match target audience language and sophistication
-- [ ] Align with content vibe from analysis
+- [ ] Align with inferred content vibe
 - [ ] Create curiosity gap or emotional pull
 - [ ] Be achievable within 30 seconds
 - [ ] Flow naturally into intro
@@ -167,7 +179,7 @@ Create a comprehensive intro that follows the hook:
 ```
 - Clear statement of what viewers will learn/gain
 - Why this matters (connect to pain point or goal)
-- What makes this approach unique (from analysis UVP)
+- What makes this approach unique (from reference material)
 ```
 
 **Content Preview** (10-20 seconds):
@@ -202,27 +214,38 @@ For each hook + intro combination, provide:
 
 ### Step 6: Generate Output Document
 
-1. **Load template**: Read `youtube/.youtube/templates/hook-template.md`
+1. **Determine output path**: `content/[project-name]/hook.md`
 
-2. **Fill template** with:
-   - All 4+ hook variations with full scripts
-   - Complete intro script
-   - Recommended combined version
-   - Visual suggestions for each
-   - Delivery notes
-   - Testing recommendations
+2. **Create hook.md** with:
+   - **Reference Material Summary**: Brief recap of what was provided
+   - **Target Audience Identified**: Who this is for
+   - **Content Strategy**: Recommended approach and tone
+   - **Hook Option 1: Problem/Pain Point**
+     - Full script
+     - Duration estimate
+     - Why this works
+     - Delivery notes
+     - Visual suggestions
+   - **Hook Option 2: Bold Statement/Claim**
+     - [Same structure as Option 1]
+   - **Hook Option 3: Story/Scenario**
+     - [Same structure as Option 1]
+   - **Hook Option 4: Question/Challenge**
+     - [Same structure as Option 1]
+   - **Intro Script** (works with any hook)
+     - Transition section
+     - Value proposition
+     - Content preview
+     - Duration estimate
+   - **Recommended Combination**
+     - Which hook works best for this content
+     - Complete hook + intro script
+     - Total duration
+   - **Testing Recommendations**
+     - How to adapt for different platforms
+     - A/B testing suggestions
 
-3. **Write to output file**: `youtube/content/[project-name]/hook.md`
-
-4. **Update memory**: Add hook data to memory JSON:
-   ```json
-   {
-     ...existing data,
-     "hook_created": "[date]",
-     "hook_count": 4,
-     "recommended_hook": "[hook number]"
-   }
-   ```
+3. **Create directory if needed**: Ensure `content/[project-name]/` exists
 
 ---
 
@@ -243,10 +266,10 @@ Provide user with:
 
 5. **Next Steps**:
    ```
-   Review and select your preferred hook, then:
-   • Run /yt.titles to generate title variations
-   • Run /yt.description to create SEO description
-   • Run /yt.tags to generate optimized tags
+   Use these scripts when creating your video. After your video is complete:
+   • Get transcript from the finished video
+   • Run /yt.analyze [project-name] [transcript] to analyze the video
+   • Then generate titles, tags, and description from the analysis
    ```
 
 ---
@@ -291,7 +314,7 @@ The opening line must create immediate impact:
 
 ### Content Vibe Alignment
 
-From analysis vibe, adjust:
+Adjust based on reference material tone:
 
 **Educational/Professional**:
 - Clear, direct language
@@ -393,8 +416,8 @@ Before reporting completion, verify:
 - [ ] Intro script includes all components
 - [ ] Visual suggestions provided
 - [ ] Delivery notes included
-- [ ] Hooks align with analysis target audience
-- [ ] Hooks match content vibe from analysis
+- [ ] Hooks align with identified target audience
+- [ ] Hooks match inferred content vibe
 - [ ] Complete hook+intro version provided
 - [ ] No generic placeholders remain
 - [ ] Output file created successfully
@@ -405,62 +428,54 @@ Before reporting completion, verify:
 
 ## Error Handling
 
-### No Analysis Found
+### No Arguments Provided
 ```
-ERROR: "No analysis found. Please run /yt.analyze first to generate the
-required analysis for this project."
+ERROR: "Please provide project name and reference material.
+
+Usage: /yt.hook [project-name] [reference material]
+
+Example:
+/yt.hook my-video "Product announcement: New AI feature that automates..."
 ```
 
-### Multiple Projects, No Specification
+### Insufficient Reference Material
+If reference material is too brief:
 ```
-Available projects:
-1. project-name-1
-2. project-name-2
-3. project-name-3
-
-Please specify which project: /yt.hook project-name-1
-```
-
-### Analysis Incomplete
-If analysis is missing key information:
-```
-WARN: "Analysis is incomplete. Generating hooks with available information,
-but results may be less targeted. Consider re-running /yt.analyze with more detail."
+WARN: "Limited reference material provided. Generating hooks with available
+information, but results may be more generic. Consider providing more context
+about the topic, target audience, and key benefits."
 ```
 
 ---
 
-## Examples
+## Example Usage
 
-### Example Analysis Context:
+### User Input:
 ```
-Topic: Claude Code automation for developers
-Target Audience: Intermediate developers, frustrated with repetitive tasks
-Content Vibe: Educational but enthusiastic, professional but approachable
-Pain Point: Wasting hours on boilerplate code
-Unique Value: Showing 5 specific real-world examples
+/yt.hook claude-plugins "Claude Code Plugin Marketplace launch - developers can now build and share custom plugins for Claude Code. Key features: shadcn/ui integration, custom slash commands, MCP server support, automatic documentation. Target audience: TypeScript developers who want to extend their AI workflow. Pain point: repetitive tasks and limited customization in AI coding tools."
 ```
 
 ### Generated Hook Example (Problem/Pain Point):
 
 **Opening Line**:
-> "I spent 15 hours last week writing the same API endpoints over and over."
+> "Every developer I know spends hours doing the same repetitive setup tasks over and over."
 
-**Full Script** (23 seconds):
+**Full Script** (26 seconds):
 ```
-I spent 15 hours last week writing the same API endpoints over and over.
-Create, read, update, delete – same pattern, different models. Then I
-discovered Claude Code could do this in minutes. Not just templates,
-actual intelligent automation that understands your codebase. In the
-next 12 minutes, I'm showing you 5 examples that will save you hours
-every single week.
+Every developer I know spends hours doing the same repetitive setup tasks
+over and over. Component libraries, boilerplate code, documentation lookups—
+it adds up fast. But what if your AI coding assistant could be customized
+to do all of this automatically? Claude Code just launched a plugin
+marketplace, and I'm about to show you how to build your first plugin in
+under 10 minutes that will save you hours every week.
 ```
 
 **Why This Works**:
-- Specific time waste (15 hours) creates immediate pain recognition
-- Lists familiar pattern (CRUD) for developer audience
-- Contrasts old way vs new way
-- Promises concrete value (5 examples, hours saved)
+- Identifies relatable pain (repetitive tasks)
+- Validates the frustration ("adds up fast")
+- Introduces surprising solution (customizable AI)
+- Promises quick value (10 minutes to build, hours saved)
+- Creates curiosity about plugins
 
 ---
 

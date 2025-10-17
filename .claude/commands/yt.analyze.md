@@ -14,7 +14,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Goal
 
-Transform raw video content (script outline, topic idea, or subtitle track) into a comprehensive analysis that includes:
+Transform raw video content (transcript, script, or subtitle track) into a comprehensive analysis that includes:
 - Primary and secondary keyword extraction
 - Target audience and content vibe identification
 - Detailed summary of video purpose and positioning
@@ -22,7 +22,9 @@ Transform raw video content (script outline, topic idea, or subtitle track) into
 - Trending topic analysis
 - Strategic recommendations for content optimization
 
-This analysis becomes the foundation for all subsequent content creation commands.
+This analysis becomes the foundation for generating titles, descriptions, and tags.
+
+**Workflow Position**: This command is used AFTER video creation, when you have a transcript. For pre-video hook/intro generation, use `/yt.hook` with reference material instead.
 
 ---
 
@@ -264,7 +266,6 @@ Provide user with:
 4. **Next Steps**:
    ```
    Ready to create content based on this analysis:
-   • Run /yt.hook to generate hook and intro scripts
    • Run /yt.titles to generate title variations
    • Run /yt.description to create SEO description
    • Run /yt.tags to generate optimized tags

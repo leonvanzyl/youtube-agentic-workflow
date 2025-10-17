@@ -19,79 +19,108 @@ This workflow transforms raw video ideas into production-ready content with opti
 ## Workflow Architecture
 
 ```
-┌─────────────┐
-│  /yt.analyze │  ← START HERE (Foundation)
-└──────┬──────┘
-       │
-       │ Creates: analysis.md + keywords + research
-       │
-       ├──────────┬──────────┬──────────┬──────────┐
-       │          │          │          │          │
-       ▼          ▼          ▼          ▼          ▼
-  ┌────────┐ ┌────────┐ ┌──────────┐ ┌──────────┐
-  │/yt.hook│ │/yt.    │ │/yt.      │ │/yt.tags  │
-  │        │ │titles  │ │description│ │          │
-  └────────┘ └────────┘ └──────────┘ └──────────┘
-     │          │          │          │
-     │          │          │          │
-     └──────────┴──────────┴──────────┘
-                    │
-              [Ready for Upload]
+PHASE 1: PRE-VIDEO (Before Recording)
+┌─────────────────────────────────────────────┐
+│  1. Gather Reference Material               │
+│     (docs, announcements, guides)           │
+└──────────────────┬──────────────────────────┘
+                   ▼
+              ┌────────┐
+              │/yt.hook│  ← Generate hook & intro
+              └────┬───┘
+                   │
+                   ▼
+         [Create Video Using Hook]
+
+
+PHASE 2: POST-VIDEO (After Recording)
+┌─────────────────────────────────────────────┐
+│  2. Get Transcript from Finished Video      │
+└──────────────────┬──────────────────────────┘
+                   ▼
+          ┌──────────────┐
+          │ /yt.analyze  │  ← Analyze transcript
+          └───────┬──────┘
+                  │
+                  │ Creates: analysis.md + keywords + research
+                  │
+     ┌────────────┼────────────┐
+     │            │            │
+     ▼            ▼            ▼
+┌────────┐  ┌──────────┐  ┌──────────┐
+│/yt.    │  │/yt.      │  │/yt.tags  │
+│titles  │  │description│  │          │
+└────────┘  └──────────┘  └──────────┘
+     │            │            │
+     └────────────┴────────────┘
+                  │
+          [Ready for Upload]
 ```
 
 **Key Points**:
-- `/yt.analyze` MUST run first (provides foundation for all other commands)
-- Hook, titles, description, and tags can run independently after analysis
-- All commands read from the analysis to maintain consistency
+- **PHASE 1**: `/yt.hook` runs FIRST with reference material (before video creation)
+- **PHASE 2**: `/yt.analyze` runs on transcript AFTER video is created
+- Titles, descriptions, and tags depend on analysis (post-video only)
 
 ---
 
 ## Quick Start
 
-### 1. Analyze Your Video Idea
+### PHASE 1: Before Creating Your Video
 
-Start with any of these input formats:
+#### 1. Gather Reference Material
 
-**Script Outline**:
+Collect documentation, announcements, or guides related to your video topic.
+
+#### 2. Generate Hook & Intro
+
 ```
-/yt.analyze
-
-Hook: Developers waste 15 hours/week on repetitive code
-Section 1: The automation problem
-Section 2: 5 practical automation examples
-Section 3: How to implement each automation
-...
+/yt.hook [project-name] [paste reference material here]
 ```
 
-**Topic Idea**:
+**Example**:
 ```
-/yt.analyze
-
-I want to create a tutorial about using Claude Code to automate
-repetitive coding tasks. Target audience is professional developers
-who are tired of writing boilerplate code.
-```
-
-**Subtitle Track**:
-```
-/yt.analyze
-
-[Paste existing video transcript or subtitles]
+/yt.hook ai-features "Claude Code now supports custom plugins.
+Developers can build and share extensions for shadcn/ui components,
+custom slash commands, and MCP servers. Target audience: TypeScript
+developers looking to automate workflows."
 ```
 
-**Output**: `youtube/content/[project-name]/analysis.md`
+**Output**: `content/[project-name]/hook.md` with 4+ hook variations and intro scripts
+
+#### 3. Create Your Video
+
+Use the generated hook and intro scripts when recording your video.
 
 ---
 
-### 2. Generate Content Assets
+### PHASE 2: After Creating Your Video
 
-Run any or all of these commands (in any order):
+#### 4. Get Your Transcript
 
-**Create Hook & Intro Scripts**:
+Extract the transcript from your finished video (YouTube auto-captions, manual transcription, etc.)
+
+#### 5. Analyze Your Video
+
 ```
-/yt.hook [project-name]
+/yt.analyze [project-name] [paste transcript here]
 ```
-Generates 4+ hook options with different psychological approaches.
+
+**Example**:
+```
+/yt.analyze ai-features
+
+[00:00] Hey everyone, today I'm going to show you...
+[00:15] The new plugin system allows developers to...
+[00:30] Let's start by creating our first plugin...
+[Paste full transcript]
+```
+
+**Output**: `content/[project-name]/analysis.md` with keywords and research
+
+#### 6. Generate Metadata
+
+Run these commands in any order:
 
 **Generate Title Variations**:
 ```
@@ -117,9 +146,11 @@ Creates 30-40 optimized tags balanced across competition levels.
 
 ### `/yt.analyze`
 
-**Purpose**: Foundation command that extracts keywords, performs competitive research, and creates strategic insights.
+**Purpose**: Analyze finished video transcript to extract keywords and create strategic insights for metadata generation.
 
-**Input**: Script outline, topic idea, or subtitle track
+**When to Use**: PHASE 2 - After your video is created and you have a transcript
+
+**Input**: Project name + video transcript (from YouTube auto-captions, manual transcription, etc.)
 
 **Output**:
 - Keyword analysis (primary, secondary, long-tail)
@@ -133,22 +164,25 @@ Creates 30-40 optimized tags balanced across competition levels.
 
 **Example**:
 ```
-/yt.analyze
+/yt.analyze docker-tutorial
 
-I want to make a video about Docker containerization for beginners.
-I'll cover installation, basic commands, creating Dockerfiles, and
-deploying a simple web app.
+[00:00] Hey everyone, welcome to this Docker tutorial for beginners.
+[00:15] Today we're going to cover everything you need to know...
+[00:30] First, let's talk about what Docker actually is...
+[Paste full transcript here]
 ```
 
 ---
 
 ### `/yt.hook`
 
-**Purpose**: Generate multiple hook and intro script options to maximize viewer retention.
+**Purpose**: Generate multiple hook and intro script options BEFORE creating your video.
 
-**Requirements**: Must run `/yt.analyze` first
+**Requirements**: Reference material about your video topic (announcements, docs, guides)
 
-**Input**: Project name (optional if only one project exists)
+**When to Use**: PHASE 1 - Before recording your video
+
+**Input**: Project name + reference material
 
 **Output**:
 - 4+ hook variations (Problem/Pain, Bold Claim, Story, Question)
@@ -159,7 +193,10 @@ deploying a simple web app.
 
 **Example**:
 ```
-/yt.hook docker-beginners-tutorial
+/yt.hook docker-tutorial "Docker beginner guide - covers installation,
+basic commands, creating Dockerfiles, and deploying web apps. Target
+audience: developers new to containerization who want to learn Docker
+basics quickly."
 ```
 
 ---
@@ -290,15 +327,19 @@ youtube/
 
 ## Best Practices
 
-### 1. Always Start with Analysis
+### 1. Follow the Two-Phase Workflow
 
-The analysis command provides the foundation for all other commands:
-- Keywords inform titles, descriptions, and tags
-- Audience insights shape hook and tone
-- Competitive research identifies opportunities
-- Traffic strategy guides optimization approach
+**PHASE 1 (Pre-Video)**:
+- Gather thorough reference material
+- Generate hook/intro scripts with `/yt.hook`
+- Use these scripts when creating your video
 
-**DON'T skip this step!**
+**PHASE 2 (Post-Video)**:
+- Get accurate transcript from finished video
+- Run `/yt.analyze` on the transcript
+- Generate titles, descriptions, and tags
+
+**DON'T skip the hook phase!** Creating your hook BEFORE the video ensures better retention and engagement.
 
 ---
 
@@ -491,15 +532,21 @@ Found an issue or have a suggestion? The workflow can be customized by:
 
 ## Getting Started Checklist
 
+**PHASE 1: Pre-Video**
 - [ ] Review this README to understand the workflow
-- [ ] Prepare your video content (script/topic/subtitles)
-- [ ] Run `/yt.analyze` with your content
+- [ ] Gather reference material (docs, announcements, guides)
+- [ ] Run `/yt.hook` with reference material
+- [ ] Review hook options and select your favorite
+- [ ] Create your video using the hook/intro scripts
+
+**PHASE 2: Post-Video**
+- [ ] Get transcript from finished video
+- [ ] Run `/yt.analyze` with the transcript
 - [ ] Review analysis output for insights
-- [ ] Generate hook options with `/yt.hook`
 - [ ] Create title variations with `/yt.titles`
 - [ ] Generate description with `/yt.description`
 - [ ] Create tags with `/yt.tags`
-- [ ] Review all generated content
+- [ ] Review all generated metadata
 - [ ] Customize to match your style
 - [ ] Upload video with optimized metadata
 - [ ] Track performance and iterate

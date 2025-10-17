@@ -320,6 +320,22 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 3. **Write to output file**: `content/[project-name]/description.md`
 
+4. **Update project state**: Update `content/.project-state.json` to track command completion:
+   ```json
+   {
+     "currentProject": "[project-name]",
+     "lastUpdated": "[ISO timestamp]",
+     "projects": {
+       "[project-name]": {
+         "created": "[ISO timestamp]",
+         "topic": "[original topic]",
+         "completedCommands": [...existing, "description"],
+         "lastCommand": "description"
+       }
+     }
+   }
+   ```
+
 ---
 
 ### Step 8: Report Completion

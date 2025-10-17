@@ -333,6 +333,22 @@ For each hook + intro combination, provide:
 
 3. **Create directory if needed**: Ensure `content/[project-name]/` exists
 
+4. **Update project state**: Update `content/.project-state.json` to track command completion:
+   ```json
+   {
+     "currentProject": "[project-name]",
+     "lastUpdated": "[ISO timestamp]",
+     "projects": {
+       "[project-name]": {
+         "created": "[ISO timestamp]",
+         "topic": "[original topic]",
+         "completedCommands": [...existing, "hook"],
+         "lastCommand": "hook"
+       }
+     }
+   }
+   ```
+
 ---
 
 ### Step 7: Report Completion

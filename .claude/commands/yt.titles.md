@@ -354,15 +354,19 @@ Recommend A/B test approach:
 
 3. **Write to output file**: `content/[project-name]/titles.md`
 
-4. **Update memory**: Add title data to memory JSON:
+4. **Update project state**: Update `content/.project-state.json` to track command completion:
    ```json
    {
-     ...existing data,
-     "titles_created": "[date]",
-     "browse_titles": 4,
-     "search_titles": 5,
-     "recommended_title": "[title text]",
-     "title_strategy": "[browse|search|hybrid]"
+     "currentProject": "[project-name]",
+     "lastUpdated": "[ISO timestamp]",
+     "projects": {
+       "[project-name]": {
+         "created": "[ISO timestamp]",
+         "topic": "[original topic]",
+         "completedCommands": [...existing, "titles"],
+         "lastCommand": "titles"
+       }
+     }
    }
    ```
 

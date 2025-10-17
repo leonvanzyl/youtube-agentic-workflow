@@ -82,7 +82,6 @@ This analysis becomes the foundation for generating titles, descriptions, and ta
 2. **Set output paths**:
 
    - ANALYSIS_FILE = content/$PROJECT_NAME/analysis.md
-   - MEMORY_FILE = .youtube/memory/$PROJECT_NAME.json
 
 3. **Parse input type**:
    - Determine if input is script/topic/subtitles
@@ -257,17 +256,19 @@ For each trend:
 
 3. **Write to ANALYSIS_FILE**: `content/$PROJECT_NAME/analysis.md`
 
-4. **Create memory snapshot**: Save key data to MEMORY_FILE as JSON:
+4. **Update project state**: Update `content/.project-state.json` to track workflow progress:
    ```json
    {
-     "project_name": "[name]",
-     "created": "[date]",
-     "primary_keywords": ["keyword1", "keyword2", "keyword3"],
-     "secondary_keywords": ["keyword1", "keyword2", ...],
-     "target_audience": "[summary]",
-     "content_vibe": "[tone/style]",
-     "traffic_strategy": "[browse|search|balanced]",
-     "unique_value": "[key differentiator]"
+     "currentProject": "[project-name]",
+     "lastUpdated": "[ISO timestamp]",
+     "projects": {
+       "[project-name]": {
+         "created": "[ISO timestamp]",
+         "topic": "[original topic]",
+         "completedCommands": ["init", "analyze"],
+         "lastCommand": "analyze"
+       }
+     }
    }
    ```
 
@@ -316,7 +317,7 @@ Before reporting completion, verify:
 - [ ] Unique value proposition articulated
 - [ ] Hook opportunities identified
 - [ ] Analysis file created successfully
-- [ ] Memory file created successfully
+- [ ] Project state updated successfully
 
 **If any validation fails**: Document the gap and attempt to resolve before completion.
 

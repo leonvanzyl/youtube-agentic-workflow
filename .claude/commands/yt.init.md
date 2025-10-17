@@ -106,7 +106,9 @@ User should provide a brief, high-level description of the video topic:
        "projects": {
          "[project-name]": {
            "created": "[ISO timestamp]",
-           "topic": "[original video topic description]"
+           "topic": "[original video topic description]",
+           "completedCommands": ["init"],
+           "lastCommand": "init"
          }
        }
      }
@@ -114,7 +116,7 @@ User should provide a brief, high-level description of the video topic:
    - If manifest already exists:
      - Preserve existing projects list
      - Update `currentProject` to new project
-     - Add new project to `projects` object
+     - Add new project to `projects` object with workflow tracking fields
      - Update `lastUpdated` timestamp
 
 4. **Verify creation**:

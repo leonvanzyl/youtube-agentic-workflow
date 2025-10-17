@@ -1,0 +1,43 @@
+{
+  "name": "create-youtube-agent",
+  "version": "1.0.0",
+  "description": "YouTube content optimization workflow system using Claude Code slash commands",
+  "main": "bin/cli.js",
+  "bin": {
+    "create-youtube-agent": "bin/cli.js"
+  },
+  "files": [
+    "bin/",
+    "templates/",
+    "CLAUDE.md"
+  ],
+  "scripts": {
+    "sync": "node scripts/sync-templates.js",
+    "prepublishOnly": "npm run sync",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "youtube",
+    "seo",
+    "content",
+    "optimization",
+    "claude",
+    "ai",
+    "workflow",
+    "video",
+    "metadata"
+  ],
+  "author": "Leon van Zyl",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}

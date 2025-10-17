@@ -26,13 +26,14 @@ Each title must:
 - Match target audience language
 - Include relevant keywords (for search)
 - Create click motivation (for browse)
-- Stay within optimal character length (60-70 characters)
+- Stay within optimal character length (55 characters max)
 
 ---
 
 ## Operating Constraints
 
 **ANALYSIS FILE CRITICAL**: The analysis.md file is the PRIMARY source for all title generation:
+
 - Primary keywords → Featured in search titles
 - Secondary keywords → Title variations and alternatives
 - Long-tail keywords → Specific angles and hooks
@@ -50,7 +51,7 @@ Each title must:
 - 2 hybrid titles
 - Top 3 recommendations with rationale
 
-**CHARACTER COUNT**: Track and display character count for each title (ideal: 60-70 characters for full display on most devices).
+**CHARACTER COUNT**: Track and display character count for each title (MAXIMUM: 55 characters for optimal mobile display).
 
 **THUMBNAIL AWARENESS**: Each title should suggest a corresponding thumbnail concept.
 
@@ -106,6 +107,7 @@ If user provides guidance like: "focus on curiosity" or "emphasize the tutorial 
    - **Hook opportunities**: Provides curiosity gap and engagement angles
 
 3. **If analysis file not found**:
+
    ```
    ⚠️ ERROR: "No analysis.md found for '[project-name]'.
 
@@ -264,16 +266,18 @@ For EACH hybrid title:
 
 For EVERY generated title, verify:
 
-#### Character Count (60-70 target)
+#### Character Count (55 character maximum)
 
 - Count total characters including spaces
-- Flag titles over 70 (may truncate)
-- Flag titles under 40 (may seem incomplete)
+- **HARD LIMIT**: All titles must be 55 characters or less
+- Flag titles under 30 (may seem incomplete)
+- Reject any title over 55 characters
 
 #### Mobile Display Test
 
-- First 40 characters must be compelling (mobile truncation point)
-- Core value/intrigue must be in first half
+- All titles must be 55 characters or less (mobile optimization)
+- Core value/intrigue must be in first 40 characters
+- No truncation since all titles fit within mobile display
 
 #### Competitive Differentiation
 
@@ -459,7 +463,7 @@ Provide user with:
 - Keyword stuff unnaturally
 - Copy competitor titles exactly
 - Use insider jargon for beginner content
-- Make titles longer than 70 characters
+- Make titles longer than 55 characters (mobile limit)
 
 **DO**:
 
@@ -545,7 +549,7 @@ Before reporting completion, verify:
 - [ ] At least 5 search titles generated
 - [ ] At least 2 hybrid titles generated
 - [ ] Character counts provided for all titles
-- [ ] All titles under 80 characters (hard limit)
+- [ ] All titles 55 characters or less (hard limit)
 - [ ] Top 3 recommendations with rationale
 - [ ] Thumbnail suggestions for key titles
 - [ ] Primary keywords included in search titles

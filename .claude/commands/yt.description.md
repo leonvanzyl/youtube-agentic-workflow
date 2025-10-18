@@ -16,10 +16,12 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Create a SEO-optimized video description following this specific structure (EXACTLY in this order):
 
-1. **Links section** - Most important links at the TOP (sponsor/affiliate, resources, support, social)
+1. **Links section** - Most important links at the TOP (sponsor/affiliate, resources)
 2. **SEO paragraph** (MAXIMUM 200 words) - Hook viewers and incorporate keywords naturally
 3. **Timestamps** - Extracted from subtitle track with SEO-optimized labels (MAX 5 words each)
-4. **Three strategic hashtags**:
+4. **Support the Channel** - Donation and support links
+5. **Connect** - Social links and subscribe call-to-action
+6. **Three strategic hashtags**:
    - Video-specific (most important keyword from the video)
    - Industry-specific (broader category)
    - Broad appeal (reaches wider audience)
@@ -135,39 +137,33 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 **Structure** (using Nate's style - emoji + compelling CTA + URL):
 
+**CRITICAL PRIORITY ORDER**: Sponsors → Affiliates → Resources
+
 ```
+[IF SPONSOR LINKS PROVIDED BY USER - ALWAYS PUT THESE FIRST]:
+🎁 [Compelling CTA for sponsor product]:
+[URL]
+[Coupon code if applicable]
+
 💬 Want my full voice to text software? Check out WisprFlow:
 https://wisprflow.ai/r?LEON114
 
 🚀 Start building with n8n (use my link to support my channel ❤️):
 https://n8n.partnerlinks.io/f7f19w3vrhin
 
-[IF SPONSOR/AFFILIATE LINKS PROVIDED BY USER]:
-🎁 [Compelling CTA for sponsor product]:
-[URL]
-[Coupon code if applicable]
-
 [IF RESOURCES MENTIONED IN VIDEO]:
 📚 [Resource Name]:
 [URL]
-
-💰 SUPPORT THE CHANNEL:
-☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
-💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
-
-🔗 CONNECT:
-📺 Subscribe for weekly AI automation tutorials
-🐦 Follow on Twitter: https://x.com/leonvz
 ```
 
 **Guidelines**:
 
+- **Priority order**: 1) Sponsors (ALWAYS FIRST), 2) Affiliates (WisprFlow, n8n), 3) Resources
 - **ALWAYS include WisprFlow and n8n affiliate links** (these are standard)
 - Use Nate's style: emoji + compelling description/CTA + URL on separate line
-- Most important/sponsor links go first (after the standard WisprFlow/n8n links)
+- Sponsor links are highest priority and go at the very top
 - Only include resources that were actually mentioned in the video
 - Keep CTAs short but persuasive
-- Support/social links always at the bottom of links section
 
 ---
 
@@ -257,7 +253,35 @@ https://n8n.partnerlinks.io/f7f19w3vrhin
 
 ---
 
-### Step 5: Generate Three Strategic Hashtags (Analysis-Driven)
+### Step 5: Generate Support the Channel Section
+
+**Structure**:
+
+```
+💰 SUPPORT THE CHANNEL:
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
+```
+
+**Notes**: This section appears AFTER timestamps and BEFORE the Connect section.
+
+---
+
+### Step 6: Generate Connect Section
+
+**Structure**:
+
+```
+🔗 CONNECT:
+📺 Subscribe for weekly AI automation tutorials
+🐦 Follow on Twitter: https://x.com/leonvz
+```
+
+**Notes**: This section appears AFTER Support the Channel and BEFORE hashtags.
+
+---
+
+### Step 7: Generate Three Strategic Hashtags (Analysis-Driven)
 
 **Hashtag Strategy** (exactly 3 hashtags):
 
@@ -298,36 +322,43 @@ https://n8n.partnerlinks.io/f7f19w3vrhin
 
 ---
 
-### Step 6: Assemble Complete Description
+### Step 8: Assemble Complete Description
 
 **Final Structure** (EXACTLY in this order):
 
 ```
-[Links Section - WisprFlow, n8n, sponsors, resources, support, social]
+[Links Section - Priority order: 1) Sponsors, 2) Affiliates (WisprFlow, n8n), 3) Resources]
 
 [SEO Opening Paragraph - MAXIMUM 200 words]
 
 [Timestamps Section with ⏱️ emoji header - each label max 5 words]
+
+[Support the Channel Section]
+
+[Connect Section]
 
 [Three Strategic Hashtags]
 ```
 
 **Final Checks**:
 
-1. **Structure Order**: Links → SEO Paragraph → Timestamps → Hashtags
-2. **Links**: WisprFlow and n8n affiliate links included with Nate's style
-3. **SEO Paragraph**: Maximum 200 words (strict limit)
-4. First 150 characters are compelling (mobile test)
-5. Keywords appear naturally (no stuffing)
-6. All links are properly formatted
-7. **Timestamps**: Each label is 5 words or less, SEO-optimized with keywords
-8. Timestamps are accurate and descriptive
-9. Three hashtags follow the strategy
-10. Total character count under 5000
+1. **Structure Order**: Links → SEO Paragraph → Timestamps → Support the Channel → Connect → Hashtags
+2. **Links Priority Order**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then resources
+3. **Links**: WisprFlow and n8n affiliate links included with Nate's style
+4. **SEO Paragraph**: Maximum 200 words (strict limit)
+5. First 150 characters are compelling (mobile test)
+6. Keywords appear naturally (no stuffing)
+7. All links are properly formatted
+8. **Timestamps**: Each label is 5 words or less, SEO-optimized with keywords
+9. Timestamps are accurate and descriptive
+10. **Support the Channel**: Donation links appear after timestamps
+11. **Connect**: Social links appear after Support the Channel
+12. Three hashtags follow the strategy
+13. Total character count under 5000
 
 ---
 
-### Step 7: Generate Output Document
+### Step 9: Generate Output Document
 
 1. **Load template**: Read `.youtube/templates/description-template.md`
 
@@ -360,7 +391,7 @@ https://n8n.partnerlinks.io/f7f19w3vrhin
 
 ---
 
-### Step 8: Report Completion
+### Step 10: Report Completion
 
 Provide user with:
 
@@ -478,14 +509,16 @@ Before reporting completion, verify:
 - [ ] Links section at the TOP
 - [ ] SEO paragraph AFTER links
 - [ ] Timestamps AFTER description
+- [ ] Support the Channel section AFTER timestamps
+- [ ] Connect section AFTER Support the Channel
 - [ ] Hashtags at the BOTTOM
 
 ### Links Section ✅
+- [ ] **Priority order correct**: Sponsors FIRST, then affiliates, then resources
 - [ ] WisprFlow affiliate link included with Nate's style
 - [ ] n8n affiliate link included with Nate's style
 - [ ] Links organized with emoji headers
 - [ ] All links are properly formatted
-- [ ] Support/social links at bottom of links section
 
 ### SEO Paragraph ✅
 - [ ] Maximum 200 words (STRICT limit - not 150-200, must be max 200)
@@ -554,29 +587,21 @@ Proceeding with limited optimization based on available content..."
 
 ## Example Output
 
-### Sample Description (New Format - Links First):
+### Sample Description (New Format - Priority Order):
 
 ```
+🎁 Get Hostinger VPS (Black Friday Deal):
+https://hostinger.com/leon
+Coupon Code: LEON (Additional 10% off)
+
 💬 Want my full voice to text software? Check out WisprFlow:
 https://wisprflow.ai/r?LEON114
 
 🚀 Start building with n8n (use my link to support my channel ❤️):
 https://n8n.partnerlinks.io/f7f19w3vrhin
 
-🎁 Get Hostinger VPS (Black Friday Deal):
-https://hostinger.com/leon
-Coupon Code: LEON (Additional 10% off)
-
 📚 Claude Code Hooks Documentation:
 https://docs.claude.com/en/docs/claude-code/hooks-guide
-
-💰 SUPPORT THE CHANNEL:
-☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
-💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
-
-🔗 CONNECT:
-📺 Subscribe for weekly AI automation tutorials
-🐦 Follow on Twitter: https://x.com/leonvz
 
 Discover how to supercharge your Claude Code workflows by integrating custom hooks with N8N automation. Learn to receive instant Telegram notifications when your AI agent completes tasks or requires approval, perfect for long-running agentic coding processes. This comprehensive tutorial covers setting up Claude Code hooks, creating Python scripts, configuring N8N workflows, and integrating Telegram bots for real-time updates on any device.
 
@@ -594,16 +619,26 @@ Discover how to supercharge your Claude Code workflows by integrating custom hoo
 20:00 Testing Notification System
 22:22 Adding Approval Request Hooks
 
+💰 SUPPORT THE CHANNEL:
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
+
+🔗 CONNECT:
+📺 Subscribe for weekly AI automation tutorials
+🐦 Follow on Twitter: https://x.com/leonvz
+
 #claudecode #n8n #agenticai
 ```
 
 **Character Count**: ~1,750 / 5000
 
 **Structure Verification**:
-✅ Links at top (WisprFlow, n8n, sponsor, resources, support, social)
+✅ Links at top (Priority: Sponsor FIRST, then affiliates WisprFlow/n8n, then resources)
 ✅ SEO paragraph after links (under 200 words)
 ✅ Timestamps with max 5-word labels
 ✅ SEO-optimized timestamp labels using keywords
+✅ Support the Channel section after timestamps
+✅ Connect section after Support the Channel
 ✅ Three hashtags at bottom
 
 **Hashtag Breakdown**:

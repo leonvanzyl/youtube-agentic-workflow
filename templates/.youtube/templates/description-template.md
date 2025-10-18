@@ -17,6 +17,10 @@
 
 [Timestamps Section - Extracted from subtitles]
 
+[Support the Channel Section]
+
+[Connect Section]
+
 [Three Strategic Hashtags]
 ```
 
@@ -29,7 +33,12 @@
 **IMPORTANT**: Links go at the TOP of the description (above SEO paragraph)
 
 ```
-[Most important links first - styled like Nate's format]
+[Priority order: Sponsors → Affiliates → Resources]
+
+[ADD SPONSOR LINKS HERE IF APPLICABLE - ALWAYS FIRST]:
+🎁 [Sponsor Product Name with compelling CTA]:
+[URL]
+[Coupon code if applicable]
 
 💬 Want my full voice to text software? Check out WisprFlow:
 https://wisprflow.ai/r?LEON114
@@ -37,28 +46,14 @@ https://wisprflow.ai/r?LEON114
 🚀 Start building with n8n (use my link to support my channel ❤️):
 https://n8n.partnerlinks.io/f7f19w3vrhin
 
-[ADD SPONSOR/AFFILIATE LINKS HERE IF APPLICABLE]:
-🎁 [Sponsor Product Name with compelling CTA]:
-[URL]
-[Coupon code if applicable]
-
 📚 [RESOURCES MENTIONED IN VIDEO]:
 [Resource 1]: [URL]
 [Resource 2]: [URL]
-
-💰 SUPPORT THE CHANNEL:
-☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
-💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
-
-🔗 CONNECT:
-📺 Subscribe for weekly AI automation tutorials
-🐦 Follow on Twitter: https://x.com/leonvz
 ```
 
 **Link Strategy Notes**:
 - Use Nate's style: emoji + compelling CTA/description + URL on separate line
-- Most important links at the top (sponsors, key tools)
-- Standard support/social links at the bottom
+- **Priority order**: 1) Sponsors (always first), 2) Affiliates (WisprFlow, n8n), 3) Resources
 - Keep descriptions short but persuasive
 
 ---
@@ -104,7 +99,31 @@ First 150 characters should be compelling for mobile users.]
 
 ---
 
-### 4. Hashtags
+### 4. Support the Channel
+
+```
+💰 SUPPORT THE CHANNEL:
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
+```
+
+**Notes**: This section appears AFTER timestamps and BEFORE the Connect section.
+
+---
+
+### 5. Connect
+
+```
+🔗 CONNECT:
+📺 Subscribe for weekly AI automation tutorials
+🐦 Follow on Twitter: https://x.com/leonvz
+```
+
+**Notes**: This section appears AFTER Support the Channel and BEFORE hashtags.
+
+---
+
+### 6. Hashtags
 
 ```
 #[videospecific] #[industryspecific] #[broadappeal]
@@ -123,14 +142,16 @@ First 150 characters should be compelling for mobile users.]
 - [ ] Links section at the TOP (most important first)
 - [ ] SEO paragraph AFTER links (maximum 200 words)
 - [ ] Timestamps AFTER description
+- [ ] Support the Channel section AFTER timestamps
+- [ ] Connect section AFTER Support the Channel
 - [ ] Hashtags at the BOTTOM
 
 ### Links Section ✅
+- [ ] **Priority order correct**: Sponsors FIRST, then affiliates, then resources
 - [ ] WisprFlow affiliate link included with Nate's style
 - [ ] n8n affiliate link included with Nate's style
 - [ ] Links organized with emoji headers
 - [ ] All links are properly formatted
-- [ ] Support/social links at bottom of links section
 
 ### SEO Paragraph ✅
 - [ ] Maximum 200 words (strict limit)

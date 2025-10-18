@@ -201,32 +201,32 @@ Resources extracted from transcript:
 
 **Structure**: Single-line format with emoji + description + URL
 
-**CRITICAL PRIORITY ORDER**: Sponsors → Affiliates → Resources (from Step 2) → Support Links
+**CRITICAL PRIORITY ORDER**: Sponsors → Affiliates → Support Links → Resources (from Step 2)
 
 ```
 [IF SPONSOR LINKS PROVIDED BY USER - ALWAYS PUT THESE FIRST]:
 🎁 [Compelling CTA for sponsor product]: [URL]
 Coupon Code: [CODE] (if applicable)
 
-💬 Want my full voice to text software? Check out WisprFlow: https://wisprflow.ai/r?LEON114
+💬 My AI voice-to-text software (Wispr Flow): https://wisprflow.ai/r?LEON114
 🚀 Start building with n8n (use my link to support my channel ❤️): https://n8n.partnerlinks.io/f7f19w3vrhin
+
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 Donate using PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
 
 [INSERT RESOURCES EXTRACTED FROM STEP 2 HERE]:
 [emoji] [Resource description from transcript analysis]: [URL]
 [emoji] [Resource description from transcript analysis]: [URL]
 (one line per resource)
-
-☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
-💵 Donate using PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
 ```
 
 **Guidelines**:
 
 - **Format**: Everything on single lines (emoji + description + URL all on one line)
-- **Priority order**: 1) Sponsors (ALWAYS FIRST), 2) Affiliates (WisprFlow, n8n), 3) Resources (extracted from transcript in Step 2), 4) Support links (coffee, PayPal)
+- **Priority order**: 1) Sponsors (ALWAYS FIRST), 2) Affiliates (WisprFlow, n8n), 3) Support links (coffee, PayPal), 4) Resources (extracted from transcript in Step 2)
 - **ALWAYS include WisprFlow and n8n affiliate links** (these are standard)
+- **ALWAYS include Buy me a coffee and PayPal links** after affiliates and before resources
 - **Dynamically include resources** extracted from Step 2 with `[URL]` placeholder for manual filling
-- **ALWAYS include Buy me a coffee and PayPal links at the end** of the links section
 - Use welcoming, casual descriptions with suitable emojis
 - Sponsor links are highest priority and go at the very top
 - Resources come from Step 2 transcript analysis - these will have `[URL]` placeholders
@@ -380,7 +380,7 @@ Each extracted resource should be formatted as:
 
 ```
 [Links Section - Single-line format]
-  - Priority order: 1) Sponsors, 2) Affiliates (WisprFlow, n8n), 3) Resources, 4) Support (coffee, PayPal)
+  - Priority order: 1) Sponsors, 2) Affiliates (WisprFlow, n8n), 3) Support (coffee, PayPal), 4) Resources
 
 [SEO Opening Paragraph - MAXIMUM 200 words]
 
@@ -393,8 +393,8 @@ Each extracted resource should be formatted as:
 
 1. **Structure Order**: Links → SEO Paragraph → Timestamps → Hashtags
 2. **Links Format**: Single-line entries (emoji + description + URL on one line)
-3. **Links Priority Order**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then resources, then support links (coffee, PayPal)
-4. **Links**: WisprFlow and n8n affiliate links included, plus Buy me a coffee and PayPal at end of links section
+3. **Links Priority Order**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then support links (coffee, PayPal), then resources
+4. **Links**: WisprFlow and n8n affiliate links included, plus Buy me a coffee and PayPal after affiliates and before resources
 5. **SEO Paragraph**: Maximum 200 words (strict limit)
 6. First 150 characters are compelling (mobile test)
 7. Keywords appear naturally (no stuffing)
@@ -570,11 +570,11 @@ Before reporting completion, verify:
 
 ### Links Section ✅
 - [ ] **Single-line format**: emoji + description + URL all on one line
-- [ ] **Priority order correct**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then resources, then support links (coffee, PayPal)
+- [ ] **Priority order correct**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then support links (coffee, PayPal), then resources
 - [ ] WisprFlow affiliate link included
 - [ ] n8n affiliate link included
-- [ ] Buy me a coffee link included at end of links section
-- [ ] PayPal donation link included at end of links section
+- [ ] Buy me a coffee link included after affiliates and before resources
+- [ ] PayPal donation link included after affiliates and before resources
 - [ ] All links are properly formatted as single-line entries
 - [ ] Suitable emojis used for each link
 
@@ -651,13 +651,15 @@ Proceeding with limited optimization based on available content..."
 🎁 Get Hostinger VPS (Black Friday Deal): https://hostinger.com/leon
 Coupon Code: LEON (Additional 10% off)
 
-💬 Want my full voice to text software? Check out WisprFlow: https://wisprflow.ai/r?LEON114
+💬 My AI voice-to-text software (Wispr Flow): https://wisprflow.ai/r?LEON114
 🚀 Start building with n8n (use my link to support my channel ❤️): https://n8n.partnerlinks.io/f7f19w3vrhin
+
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 Donate using PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
+
 📚 Claude Code Hooks Documentation: [URL]
 🔧 Anthropic's Official Claude Code Marketplace: [URL]
 🎥 My previous tutorial on setting up n8n webhooks: [URL]
-☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
-💵 Donate using PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
 
 Discover how to supercharge your Claude Code workflows by integrating custom hooks with N8N automation. Learn to receive instant Telegram notifications when your AI agent completes tasks or requires approval, perfect for long-running agentic coding processes. This comprehensive tutorial covers setting up Claude Code hooks, creating Python scripts, configuring N8N workflows, and integrating Telegram bots for real-time updates on any device.
 
@@ -682,7 +684,7 @@ Discover how to supercharge your Claude Code workflows by integrating custom hoo
 
 **Structure Verification**:
 ✅ All links at top in single-line format
-✅ Priority order: Sponsor, affiliates (WisprFlow/n8n), resources (3 extracted from transcript with [URL] placeholders), support (coffee, PayPal)
+✅ Priority order: Sponsor, affiliates (WisprFlow/n8n), support (coffee, PayPal), resources (3 extracted from transcript with [URL] placeholders)
 ✅ SEO paragraph after links (under 200 words)
 ✅ Timestamps with max 5-word labels
 ✅ SEO-optimized timestamp labels using keywords

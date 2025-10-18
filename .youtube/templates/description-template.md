@@ -83,9 +83,9 @@ First 150 characters should be compelling for mobile users.]
 
 ```
 ⏱️ TIMESTAMPS:
-00:00 [SEO-Optimized Label]
-01:15 [SEO-Optimized Label]
-02:22 [SEO-Optimized Label]
+00:00 - [SEO-Optimized Label]
+01:15 - [SEO-Optimized Label]
+02:22 - [SEO-Optimized Label]
 [Continue for all major points...]
 ```
 

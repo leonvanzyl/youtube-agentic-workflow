@@ -315,10 +315,10 @@ Each extracted resource should be formatted as:
 
 ```
 ⏱️ TIMESTAMPS:
-00:00 [SEO-Optimized Label - max 5 words]
-01:15 [SEO-Optimized Label - max 5 words]
-02:22 [SEO-Optimized Label - max 5 words]
-03:00 [SEO-Optimized Label - max 5 words]
+00:00 - [SEO-Optimized Label - max 5 words]
+01:15 - [SEO-Optimized Label - max 5 words]
+02:22 - [SEO-Optimized Label - max 5 words]
+03:00 - [SEO-Optimized Label - max 5 words]
 [Continue for all major points...]
 ```
 
@@ -512,11 +512,11 @@ really cool about Claude Code and N8N that I think you'll find interesting...
 
 ```
 ⏱️ TIMESTAMPS:
-00:00 Claude Code Hooks Introduction
-01:15 Understanding Hook Events
-02:22 Long-Running Agentic Task Solution
-03:00 Setting Up First Hook
-04:33 Creating Python Hook Scripts
+00:00 - Claude Code Hooks Introduction
+01:15 - Understanding Hook Events
+02:22 - Long-Running Agentic Task Solution
+03:00 - Setting Up First Hook
+04:33 - Creating Python Hook Scripts
 ```
 
 **Poor Timestamps** ❌:
@@ -664,18 +664,18 @@ Coupon Code: LEON (Additional 10% off)
 Discover how to supercharge your Claude Code workflows by integrating custom hooks with N8N automation. Learn to receive instant Telegram notifications when your AI agent completes tasks or requires approval, perfect for long-running agentic coding processes. This comprehensive tutorial covers setting up Claude Code hooks, creating Python scripts, configuring N8N workflows, and integrating Telegram bots for real-time updates on any device.
 
 ⏱️ TIMESTAMPS:
-00:00 Claude Code Hooks Introduction
-01:15 Understanding Hook Events
-02:22 Long-Running Agentic Task Solution
-03:00 Setting Up First Hook
-04:33 Creating Python Hook Scripts
-06:26 Debugging Hook Inputs
-08:33 Extracting Agent Message Transcripts
-11:31 N8N Cloud Setup
-14:31 N8N Workflow Telegram Bot
-16:46 Webhook Integration Setup
-20:00 Testing Notification System
-22:22 Adding Approval Request Hooks
+00:00 - Claude Code Hooks Introduction
+01:15 - Understanding Hook Events
+02:22 - Long-Running Agentic Task Solution
+03:00 - Setting Up First Hook
+04:33 - Creating Python Hook Scripts
+06:26 - Debugging Hook Inputs
+08:33 - Extracting Agent Message Transcripts
+11:31 - N8N Cloud Setup
+14:31 - N8N Workflow Telegram Bot
+16:46 - Webhook Integration Setup
+20:00 - Testing Notification System
+22:22 - Adding Approval Request Hooks
 
 #claudecode #n8n #agenticai
 ```

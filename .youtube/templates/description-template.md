@@ -11,9 +11,9 @@
 ```
 [PASTE THIS DIRECTLY INTO YOUTUBE STUDIO]
 
-[SEO Opening Paragraph - 150-200 words]
+[Links Section - Important links at the top]
 
-[Links Section - Organized with emojis]
+[SEO Paragraph - Maximum 200 words]
 
 [Timestamps Section - Extracted from subtitles]
 
@@ -24,31 +24,25 @@
 
 ## Components Breakdown
 
-### 1. SEO Opening Paragraph
+### 1. Links Section
 
-**Word Count**: [X words] (Target: 150-200)
-
-```
-[The opening paragraph that hooks viewers and includes natural keyword integration.
-First 150 characters should be compelling for mobile users.]
-```
-
-**Keywords Used**:
-- Primary: [keyword] - [X mentions]
-- Secondary: [keyword1], [keyword2] - naturally integrated
-
----
-
-### 2. Links Section
+**IMPORTANT**: Links go at the TOP of the description (above SEO paragraph)
 
 ```
-[Organized by category with emoji headers]
+[Most important links first - styled like Nate's format]
 
-🎁 [SPONSOR/AFFILIATE SECTION]:
-[Product/Service Name]: [URL]
+💬 Want my full voice to text software? Check out WisprFlow:
+https://wisprflow.ai/r?LEON114
+
+🚀 Start building with n8n (use my link to support my channel ❤️):
+https://n8n.partnerlinks.io/f7f19w3vrhin
+
+[ADD SPONSOR/AFFILIATE LINKS HERE IF APPLICABLE]:
+🎁 [Sponsor Product Name with compelling CTA]:
+[URL]
 [Coupon code if applicable]
 
-📚 [RESOURCES MENTIONED]:
+📚 [RESOURCES MENTIONED IN VIDEO]:
 [Resource 1]: [URL]
 [Resource 2]: [URL]
 
@@ -61,6 +55,29 @@ First 150 characters should be compelling for mobile users.]
 🐦 Follow on Twitter: https://x.com/leonvz
 ```
 
+**Link Strategy Notes**:
+- Use Nate's style: emoji + compelling CTA/description + URL on separate line
+- Most important links at the top (sponsors, key tools)
+- Standard support/social links at the bottom
+- Keep descriptions short but persuasive
+
+---
+
+### 2. SEO Opening Paragraph
+
+**Word Count**: [X words] (Target: Maximum 200 words)
+
+```
+[The opening paragraph that hooks viewers and includes natural keyword integration.
+First 150 characters should be compelling for mobile users.]
+```
+
+**Keywords Used**:
+- Primary: [keyword] - [X mentions]
+- Secondary: [keyword1], [keyword2] - naturally integrated
+
+**IMPORTANT**: This comes AFTER the links section in the final description
+
 ---
 
 ### 3. Timestamps
@@ -70,13 +87,20 @@ First 150 characters should be compelling for mobile users.]
 
 ```
 ⏱️ TIMESTAMPS:
-00:00 - [Descriptive label]
-01:15 - [Key topic or section]
-02:22 - [Important point]
+00:00 [SEO-Optimized Label]
+01:15 [SEO-Optimized Label]
+02:22 [SEO-Optimized Label]
 [Continue for all major points...]
 ```
 
-**Notes**: Timestamps extracted from subtitle track by identifying topic changes and key discussion points.
+**Timestamp Guidelines**:
+- **Maximum 5 words per timestamp**
+- **SEO-optimized using keywords from analysis.md**
+- Use primary and secondary keywords naturally
+- Make labels descriptive but concise
+- Example: "Building n8n AI Agent" not "Setting up and configuring the n8n AI automation agent workflow"
+
+**Notes**: Timestamps extracted from subtitle track by identifying topic changes and key discussion points. Labels must incorporate relevant keywords while staying under 5 words.
 
 ---
 
@@ -95,17 +119,41 @@ First 150 characters should be compelling for mobile users.]
 
 ## Validation Checklist
 
-- [ ] SEO paragraph is 150-200 words
-- [ ] First 150 characters are compelling (mobile test)
-- [ ] Primary keyword in first 25 words
+### Structure Order ✅
+- [ ] Links section at the TOP (most important first)
+- [ ] SEO paragraph AFTER links (maximum 200 words)
+- [ ] Timestamps AFTER description
+- [ ] Hashtags at the BOTTOM
+
+### Links Section ✅
+- [ ] WisprFlow affiliate link included with Nate's style
+- [ ] n8n affiliate link included with Nate's style
 - [ ] Links organized with emoji headers
 - [ ] All links are properly formatted
-- [ ] Timestamps extracted from subtitle file
-- [ ] Timestamp labels are descriptive (not generic "intro", "main content")
-- [ ] Exactly 3 hashtags following strategy
-- [ ] Total character count under 5000
+- [ ] Support/social links at bottom of links section
+
+### SEO Paragraph ✅
+- [ ] Maximum 200 words (strict limit)
+- [ ] First 150 characters are compelling (mobile test)
+- [ ] Primary keyword in first 25 words
 - [ ] No keyword stuffing
+- [ ] Natural keyword integration
+
+### Timestamps ✅
+- [ ] Timestamps extracted from subtitle file
+- [ ] Each timestamp is MAXIMUM 5 words
+- [ ] Timestamps are SEO-optimized using analysis.md keywords
+- [ ] Labels are descriptive (not generic "intro", "main content")
+- [ ] Keywords naturally incorporated in timestamp labels
+
+### Hashtags ✅
+- [ ] Exactly 3 hashtags following strategy
+- [ ] Video-specific + Industry-specific + Broad appeal
+
+### Overall ✅
+- [ ] Total character count under 5000
 - [ ] Mobile-friendly formatting with proper spacing
+- [ ] Follows exact same structure as Nate's example
 
 ---
 
@@ -134,7 +182,8 @@ First 150 characters should be compelling for mobile users.]
 ### Timestamp Strategy
 - Total timestamps: [X]
 - Average spacing: [X minutes]
-- Labels: Descriptive and valuable for navigation
+- Labels: Maximum 5 words, SEO-optimized with keywords from analysis.md
+- Keyword integration: Natural incorporation of primary/secondary keywords
 
 ### Link Strategy
 - Sponsor/Affiliate links: [X]

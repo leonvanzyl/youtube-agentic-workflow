@@ -14,11 +14,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Goal
 
-Create a SEO-optimized video description following this specific structure:
+Create a SEO-optimized video description following this specific structure (EXACTLY in this order):
 
-1. **Strong SEO opening paragraph** (<200 words) - Hook viewers and incorporate keywords naturally
-2. **Links section** - Sponsor/affiliate links, resources mentioned, support links, social connections
-3. **Timestamps** - Extracted from subtitle track in references folder with descriptive labels
+1. **Links section** - Most important links at the TOP (sponsor/affiliate, resources, support, social)
+2. **SEO paragraph** (MAXIMUM 200 words) - Hook viewers and incorporate keywords naturally
+3. **Timestamps** - Extracted from subtitle track with SEO-optimized labels (MAX 5 words each)
 4. **Three strategic hashtags**:
    - Video-specific (most important keyword from the video)
    - Industry-specific (broader category)
@@ -129,9 +129,53 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 ---
 
-### Step 2: Generate SEO Opening Paragraph (Analysis-Driven)
+### Step 2: Generate Links Section (FIRST in Description)
 
-**Target**: 150-200 words that hook viewers and optimize for search
+**CRITICAL**: Links go at the TOP of the description, before the SEO paragraph
+
+**Structure** (using Nate's style - emoji + compelling CTA + URL):
+
+```
+💬 Want my full voice to text software? Check out WisprFlow:
+https://wisprflow.ai/r?LEON114
+
+🚀 Start building with n8n (use my link to support my channel ❤️):
+https://n8n.partnerlinks.io/f7f19w3vrhin
+
+[IF SPONSOR/AFFILIATE LINKS PROVIDED BY USER]:
+🎁 [Compelling CTA for sponsor product]:
+[URL]
+[Coupon code if applicable]
+
+[IF RESOURCES MENTIONED IN VIDEO]:
+📚 [Resource Name]:
+[URL]
+
+💰 SUPPORT THE CHANNEL:
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
+
+🔗 CONNECT:
+📺 Subscribe for weekly AI automation tutorials
+🐦 Follow on Twitter: https://x.com/leonvz
+```
+
+**Guidelines**:
+
+- **ALWAYS include WisprFlow and n8n affiliate links** (these are standard)
+- Use Nate's style: emoji + compelling description/CTA + URL on separate line
+- Most important/sponsor links go first (after the standard WisprFlow/n8n links)
+- Only include resources that were actually mentioned in the video
+- Keep CTAs short but persuasive
+- Support/social links always at the bottom of links section
+
+---
+
+### Step 3: Generate SEO Opening Paragraph (Analysis-Driven)
+
+**Target**: MAXIMUM 200 words that hook viewers and optimize for search
+
+**IMPORTANT**: This comes AFTER the links section in the final description
 
 **Data Source**: Use analysis.md as the foundation for all content decisions
 
@@ -144,7 +188,7 @@ If user provides context like: "include link to course" or "mention the GitHub r
    - Match the **content vibe** (educational, entertaining, professional, etc.)
    - Create interest and urgency using **key themes** from analysis
 
-2. **Body** (remaining content to reach ~200 words):
+2. **Body** (remaining content up to MAXIMUM 200 words):
    - Expand on the problem/opportunity using **target audience** context from analysis
    - What viewers will learn (draw from **key topics** in analysis)
    - Specific outcomes or benefits (use **value propositions**)
@@ -168,38 +212,6 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 ---
 
-### Step 3: Generate Links Section
-
-**Structure** (using emojis for visual interest):
-
-```
-🎁 [Sponsor/Affiliate Section Title]:
-[Product/Service Name]: [URL]
-[Coupon code or special offer if applicable]
-
-📚 [Resources Mentioned in Video]:
-[Resource 1]: [URL]
-[Resource 2]: [URL]
-
-💰 SUPPORT THE CHANNEL:
-☕ Buy me a coffee: [URL]
-💵 PayPal: [URL]
-
-🔗 CONNECT:
-📺 Subscribe for [content description]
-🐦 Follow on Twitter: [URL]
-```
-
-**Guidelines**:
-
-- Only include links that are relevant (don't add placeholder links)
-- Use descriptive names for each link
-- Group by category with emoji headers
-- If user mentioned specific links in context, include those
-- Common categories: sponsor/affiliate, resources mentioned, support, social connections
-
----
-
 ### Step 4: Extract and Generate Timestamps
 
 **Process**:
@@ -212,21 +224,25 @@ If user provides context like: "include link to course" or "mention the GitHub r
    - Natural section breaks
    - Important moments worth highlighting
 
-3. **Create descriptive labels** for each timestamp:
+3. **Create SEO-optimized labels** for each timestamp:
 
-   - Keep labels concise but descriptive (5-10 words)
+   - **MAXIMUM 5 words per timestamp** (strict limit)
+   - **SEO-optimized using keywords from analysis.md**
+   - Use primary and secondary keywords naturally in labels
    - Focus on value/topic, not generic descriptions
    - Make it scannable and useful for viewers
    - Extract actual keywords from subtitle content
+   - Example: "Building n8n AI Agent" ✅ (5 words, includes keywords)
+   - Example: "Setting up and configuring the n8n AI automation agent workflow" ❌ (11 words, too long)
 
 4. **Format timestamps**:
 
 ```
 ⏱️ TIMESTAMPS:
-00:00 - [Descriptive label for intro/hook]
-01:15 - [Key topic or section 1]
-02:22 - [Important point or transition]
-03:00 - [Main content section]
+00:00 [SEO-Optimized Label - max 5 words]
+01:15 [SEO-Optimized Label - max 5 words]
+02:22 [SEO-Optimized Label - max 5 words]
+03:00 [SEO-Optimized Label - max 5 words]
 [Continue for all major points...]
 ```
 
@@ -234,6 +250,8 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 - Aim for 8-15 timestamps for a 15-25 minute video
 - Each timestamp should represent a meaningful topic change
+- **Each label MUST be 5 words or less**
+- **Labels MUST incorporate keywords from analysis.md**
 - Labels should be specific enough to help viewers navigate
 - Use the actual content from subtitles to inform labels
 
@@ -282,26 +300,30 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 ### Step 6: Assemble Complete Description
 
-**Final Structure**:
+**Final Structure** (EXACTLY in this order):
 
 ```
-[SEO Opening Paragraph - 150-200 words]
+[Links Section - WisprFlow, n8n, sponsors, resources, support, social]
 
-[Links Section with emojis and organized categories]
+[SEO Opening Paragraph - MAXIMUM 200 words]
 
-[Timestamps Section with ⏱️ emoji header]
+[Timestamps Section with ⏱️ emoji header - each label max 5 words]
 
 [Three Strategic Hashtags]
 ```
 
 **Final Checks**:
 
-1. Total character count under 5000
-2. First 150 characters are compelling (mobile test)
-3. Keywords appear naturally (no stuffing)
-4. All links are properly formatted
-5. Timestamps are accurate and descriptive
-6. Three hashtags follow the strategy
+1. **Structure Order**: Links → SEO Paragraph → Timestamps → Hashtags
+2. **Links**: WisprFlow and n8n affiliate links included with Nate's style
+3. **SEO Paragraph**: Maximum 200 words (strict limit)
+4. First 150 characters are compelling (mobile test)
+5. Keywords appear naturally (no stuffing)
+6. All links are properly formatted
+7. **Timestamps**: Each label is 5 words or less, SEO-optimized with keywords
+8. Timestamps are accurate and descriptive
+9. Three hashtags follow the strategy
+10. Total character count under 5000
 
 ---
 
@@ -366,7 +388,9 @@ Provide user with:
 
 ## Description Writing Guidelines
 
-### SEO Opening Paragraph Best Practices
+### SEO Opening Paragraph Best Practices (Maximum 200 Words)
+
+**IMPORTANT**: This comes AFTER the links section in the final description
 
 **GOOD Opening** ✅:
 
@@ -378,6 +402,7 @@ long-running agentic coding processes. This comprehensive tutorial covers
 setting up Claude Code hooks, creating Python scripts, configuring N8N
 workflows, and integrating Telegram bots for real-time updates on any device.
 ```
+(~75 words - well under the 200-word maximum)
 
 **BAD Opening** ❌:
 
@@ -388,32 +413,37 @@ really cool about Claude Code and N8N that I think you'll find interesting...
 
 **Key Differences**:
 
-- Good: Immediate value, specific outcomes, natural keywords
-- Bad: Generic greeting, vague promise, no keywords
+- Good: Immediate value, specific outcomes, natural keywords, under 200 words
+- Bad: Generic greeting, vague promise, no keywords, wastes character count
 
 ---
 
 ### Timestamp Guidelines
 
-**Effective Timestamps** ✅:
+**Effective Timestamps** ✅ (Max 5 words, SEO-optimized):
 
 ```
 ⏱️ TIMESTAMPS:
-00:00 - Introduction to Claude Code hooks and their potential
-01:15 - Understanding hook events and when they trigger
-02:22 - Why this solution matters for long running agentic tasks
-03:00 - Setting up your first hook in Claude Code
+00:00 Claude Code Hooks Introduction
+01:15 Understanding Hook Events
+02:22 Long-Running Agentic Task Solution
+03:00 Setting Up First Hook
+04:33 Creating Python Hook Scripts
 ```
 
 **Poor Timestamps** ❌:
 
 ```
-0:00 Intro
-5:00 Main content
-15:00 Outro
+0:00 Intro (too generic, no keywords)
+5:00 Main content (no value, not descriptive)
+15:00 Setting up and configuring the complete n8n automation workflow system (11 words - WAY too long)
 ```
 
-**Extract from subtitles**: Use the actual content to create descriptive, valuable labels
+**Key Principles**:
+- **Maximum 5 words per label** (strict limit)
+- **Include keywords from analysis.md** (SEO optimization)
+- Descriptive and valuable for navigation
+- Extract from actual subtitle content
 
 ---
 
@@ -444,16 +474,41 @@ really cool about Claude Code and N8N that I think you'll find interesting...
 
 Before reporting completion, verify:
 
-- [ ] SEO paragraph is 150-200 words
+### Structure Order ✅
+- [ ] Links section at the TOP
+- [ ] SEO paragraph AFTER links
+- [ ] Timestamps AFTER description
+- [ ] Hashtags at the BOTTOM
+
+### Links Section ✅
+- [ ] WisprFlow affiliate link included with Nate's style
+- [ ] n8n affiliate link included with Nate's style
+- [ ] Links organized with emoji headers
+- [ ] All links are properly formatted
+- [ ] Support/social links at bottom of links section
+
+### SEO Paragraph ✅
+- [ ] Maximum 200 words (STRICT limit - not 150-200, must be max 200)
 - [ ] First 150 characters are compelling (mobile test)
 - [ ] Primary keyword in first 25 words (if search-focused)
-- [ ] Links section organized with emoji headers
-- [ ] Timestamps extracted from subtitle file
-- [ ] Timestamp labels are descriptive (not generic)
-- [ ] Exactly 3 hashtags following the strategy
-- [ ] Total character count under 5000
 - [ ] No keyword stuffing
+- [ ] Natural keyword integration
+
+### Timestamps ✅
+- [ ] Timestamps extracted from subtitle file
+- [ ] **Each timestamp is MAXIMUM 5 words** (strict limit)
+- [ ] **Timestamps are SEO-optimized using analysis.md keywords**
+- [ ] Labels are descriptive (not generic "intro", "main content")
+- [ ] Keywords naturally incorporated in timestamp labels
+
+### Hashtags ✅
+- [ ] Exactly 3 hashtags following the strategy
+- [ ] Video-specific + Industry-specific + Broad appeal
+
+### Overall ✅
+- [ ] Total character count under 5000
 - [ ] Mobile-friendly formatting with proper spacing
+- [ ] Follows exact same structure as Nate's format
 - [ ] Output file created successfully
 
 **If any validation fails**: Revise the relevant section before completion.
@@ -499,26 +554,21 @@ Proceeding with limited optimization based on available content..."
 
 ## Example Output
 
-### Sample Description (Based on your provided example):
+### Sample Description (New Format - Links First):
 
 ```
-Discover how to supercharge your Claude Code workflows by integrating custom hooks with N8N automation. Learn to receive instant Telegram notifications when your AI agent completes tasks or requires approval, perfect for long-running agentic coding processes. This comprehensive tutorial covers setting up Claude Code hooks, creating Python scripts, configuring N8N workflows, and integrating Telegram bots for real-time updates on any device.
+💬 Want my full voice to text software? Check out WisprFlow:
+https://wisprflow.ai/r?LEON114
+
+🚀 Start building with n8n (use my link to support my channel ❤️):
+https://n8n.partnerlinks.io/f7f19w3vrhin
 
 🎁 Get Hostinger VPS (Black Friday Deal):
 https://hostinger.com/leon
 Coupon Code: LEON (Additional 10% off)
 
-🔍 Try N8N Cloud (Free Trial):
-https://n8n.partnerlinks.io/f7f19w3vrhin
-
-🎙️ Voice to Text Software (Wispr Flow):
-https://wisprflow.ai/r?LEON114
-
 📚 Claude Code Hooks Documentation:
 https://docs.claude.com/en/docs/claude-code/hooks-guide
-
-📺 Complete N8N Masterclass:
-https://youtu.be/CfD17vBCPEU
 
 💰 SUPPORT THE CHANNEL:
 ☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
@@ -528,27 +578,35 @@ https://youtu.be/CfD17vBCPEU
 📺 Subscribe for weekly AI automation tutorials
 🐦 Follow on Twitter: https://x.com/leonvz
 
+Discover how to supercharge your Claude Code workflows by integrating custom hooks with N8N automation. Learn to receive instant Telegram notifications when your AI agent completes tasks or requires approval, perfect for long-running agentic coding processes. This comprehensive tutorial covers setting up Claude Code hooks, creating Python scripts, configuring N8N workflows, and integrating Telegram bots for real-time updates on any device.
+
 ⏱️ TIMESTAMPS:
-00:00 - Introduction to Claude Code hooks and their potential
-01:15 - Understanding hook events and when they trigger
-02:22 - Why this solution matters for long running agentic tasks
-03:00 - Setting up your first hook in Claude Code
-04:33 - Creating Python scripts for hook commands
-06:26 - Using Claude Code to debug hook inputs
-08:33 - Extracting the agents last message from transcripts
-11:31 - Setting up N8N in the cloud with Hostinger
-14:31 - Creating your first N8N workflow and Telegram bot
-16:46 - Configuring webhook integration between Claude Code and N8N
-20:00 - Testing the complete notification system
-22:22 - Adding notification hooks for approval requests
+00:00 Claude Code Hooks Introduction
+01:15 Understanding Hook Events
+02:22 Long-Running Agentic Task Solution
+03:00 Setting Up First Hook
+04:33 Creating Python Hook Scripts
+06:26 Debugging Hook Inputs
+08:33 Extracting Agent Message Transcripts
+11:31 N8N Cloud Setup
+14:31 N8N Workflow Telegram Bot
+16:46 Webhook Integration Setup
+20:00 Testing Notification System
+22:22 Adding Approval Request Hooks
 
 #claudecode #n8n #agenticai
 ```
 
-**Character Count**: 1,847 / 5000
+**Character Count**: ~1,750 / 5000
+
+**Structure Verification**:
+✅ Links at top (WisprFlow, n8n, sponsor, resources, support, social)
+✅ SEO paragraph after links (under 200 words)
+✅ Timestamps with max 5-word labels
+✅ SEO-optimized timestamp labels using keywords
+✅ Three hashtags at bottom
 
 **Hashtag Breakdown**:
-
 - #claudecode - Video-specific (main topic of the tutorial)
 - #n8n - Industry-specific (automation platform niche)
 - #agenticai - Broad appeal (wider AI/automation audience)

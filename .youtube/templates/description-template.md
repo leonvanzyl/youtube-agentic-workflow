@@ -11,15 +11,11 @@
 ```
 [PASTE THIS DIRECTLY INTO YOUTUBE STUDIO]
 
-[Links Section - Important links at the top]
+[Links Section - All links in single-line format at the top]
 
 [SEO Paragraph - Maximum 200 words]
 
 [Timestamps Section - Extracted from subtitles]
-
-[Support the Channel Section]
-
-[Connect Section]
 
 [Three Strategic Hashtags]
 ```
@@ -32,29 +28,34 @@
 
 **IMPORTANT**: Links go at the TOP of the description (above SEO paragraph)
 
+**FORMAT**: Single-line entries (emoji + description + URL all on one line)
+
 ```
-[Priority order: Sponsors → Affiliates → Resources]
+[Priority order: Sponsors → Affiliates → Resources → Support]
 
 [ADD SPONSOR LINKS HERE IF APPLICABLE - ALWAYS FIRST]:
-🎁 [Sponsor Product Name with compelling CTA]:
-[URL]
-[Coupon code if applicable]
+🎁 [Sponsor Product Name with compelling CTA]: [URL]
+Coupon Code: [CODE] (if applicable)
 
-💬 Want my full voice to text software? Check out WisprFlow:
-https://wisprflow.ai/r?LEON114
+💬 Want my full voice to text software? Check out WisprFlow: https://wisprflow.ai/r?LEON114
+🚀 Start building with n8n (use my link to support my channel ❤️): https://n8n.partnerlinks.io/f7f19w3vrhin
 
-🚀 Start building with n8n (use my link to support my channel ❤️):
-https://n8n.partnerlinks.io/f7f19w3vrhin
+[RESOURCES DYNAMICALLY EXTRACTED FROM TRANSCRIPT]:
+📚 [Resource description based on video context]: [URL]
+🔧 [Another resource with suitable emoji]: [URL]
+(These are auto-generated - just fill in the URLs)
 
-📚 [RESOURCES MENTIONED IN VIDEO]:
-[Resource 1]: [URL]
-[Resource 2]: [URL]
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 Donate using PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
 ```
 
 **Link Strategy Notes**:
-- Use Nate's style: emoji + compelling CTA/description + URL on separate line
-- **Priority order**: 1) Sponsors (always first), 2) Affiliates (WisprFlow, n8n), 3) Resources
-- Keep descriptions short but persuasive
+- **Single-line format**: Everything on one line (emoji + description + URL)
+- **Priority order**: 1) Sponsors (always first), 2) Affiliates (WisprFlow, n8n), 3) Resources (dynamically extracted from transcript), 4) Support (coffee, PayPal)
+- **Resources are auto-extracted**: The command analyzes your video transcript for mentions of docs, tools, GitHub repos, other videos, etc.
+- Use welcoming, casual descriptions with suitable emojis
+- ALWAYS include Buy me a coffee and PayPal at the end
+- Resource links will have `[URL]` placeholders - fill these in before uploading
 
 ---
 
@@ -99,31 +100,7 @@ First 150 characters should be compelling for mobile users.]
 
 ---
 
-### 4. Support the Channel
-
-```
-💰 SUPPORT THE CHANNEL:
-☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
-💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
-```
-
-**Notes**: This section appears AFTER timestamps and BEFORE the Connect section.
-
----
-
-### 5. Connect
-
-```
-🔗 CONNECT:
-📺 Subscribe for weekly AI automation tutorials
-🐦 Follow on Twitter: https://x.com/leonvz
-```
-
-**Notes**: This section appears AFTER Support the Channel and BEFORE hashtags.
-
----
-
-### 6. Hashtags
+### 4. Hashtags
 
 ```
 #[videospecific] #[industryspecific] #[broadappeal]
@@ -139,19 +116,20 @@ First 150 characters should be compelling for mobile users.]
 ## Validation Checklist
 
 ### Structure Order ✅
-- [ ] Links section at the TOP (most important first)
+- [ ] Links section at the TOP
 - [ ] SEO paragraph AFTER links (maximum 200 words)
 - [ ] Timestamps AFTER description
-- [ ] Support the Channel section AFTER timestamps
-- [ ] Connect section AFTER Support the Channel
 - [ ] Hashtags at the BOTTOM
 
 ### Links Section ✅
-- [ ] **Priority order correct**: Sponsors FIRST, then affiliates, then resources
-- [ ] WisprFlow affiliate link included with Nate's style
-- [ ] n8n affiliate link included with Nate's style
-- [ ] Links organized with emoji headers
-- [ ] All links are properly formatted
+- [ ] **Single-line format**: emoji + description + URL all on one line
+- [ ] **Priority order correct**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then resources, then support (coffee, PayPal)
+- [ ] WisprFlow affiliate link included
+- [ ] n8n affiliate link included
+- [ ] Buy me a coffee link included at end of links section
+- [ ] PayPal donation link included at end of links section
+- [ ] All links are properly formatted as single-line entries
+- [ ] Suitable emojis used for each link
 
 ### SEO Paragraph ✅
 - [ ] Maximum 200 words (strict limit)
@@ -214,8 +192,9 @@ First 150 characters should be compelling for mobile users.]
 ---
 
 **Created**: [DATE]
-**Ready for Upload**: Yes
+**Ready for Upload**: After filling [URL] placeholders
+**Resources Extracted from Transcript**: [X] links need URLs
 **Source Files Used**:
-- [analysis.md] (if exists)
-- [subtitles.srt/vtt]
-- [titles.md] (if exists)
+- [analysis.md] (CRITICAL - drives SEO strategy)
+- [subtitles.srt/vtt] (CRITICAL - used for resource extraction + timestamps)
+- [titles.md] (optional - if exists)

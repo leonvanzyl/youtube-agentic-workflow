@@ -16,12 +16,14 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Create a SEO-optimized video description following this specific structure (EXACTLY in this order):
 
-1. **Links section** - Most important links at the TOP (sponsor/affiliate, resources)
+1. **Links section** - All links at the TOP in single-line format:
+   - Sponsors (if applicable)
+   - Affiliates (WisprFlow, n8n)
+   - Resources mentioned in video
+   - Support links (Buy me a coffee, PayPal)
 2. **SEO paragraph** (MAXIMUM 200 words) - Hook viewers and incorporate keywords naturally
 3. **Timestamps** - Extracted from subtitle track with SEO-optimized labels (MAX 5 words each)
-4. **Support the Channel** - Donation and support links
-5. **Connect** - Social links and subscribe call-to-action
-6. **Three strategic hashtags**:
+4. **Three strategic hashtags**:
    - Video-specific (most important keyword from the video)
    - Industry-specific (broader category)
    - Broad appeal (reaches wider audience)
@@ -78,13 +80,17 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 ### Step 1: Load Context and Locate Files
 
+**CRITICAL FILES REQUIRED**:
+- **analysis.md**: Drives ALL SEO strategy (keywords, audience, vibe)
+- **subtitle file (.srt or .vtt)**: Used for BOTH resource extraction AND timestamps
+
 1. **Locate required files**:
 
    ```
-   ANALYSIS_FILE = content/[project-name]/analysis.md (STRONGLY RECOMMENDED)
-   SUBTITLE_FILE = content/[project-name]/references/*.srt or *.vtt (REQUIRED)
-   TITLES_FILE = content/[project-name]/titles.md (if exists)
-   HOOK_FILE = content/[project-name]/hook.md (if exists)
+   ANALYSIS_FILE = content/[project-name]/analysis.md (CRITICAL - drives SEO strategy)
+   SUBTITLE_FILE = content/[project-name]/references/*.srt or *.vtt (CRITICAL - used for resource extraction + timestamps)
+   TITLES_FILE = content/[project-name]/titles.md (optional - if exists)
+   HOOK_FILE = content/[project-name]/hook.md (optional - if exists)
    ```
 
 2. **Load and extract from analysis.md (PRIMARY CONTEXT SOURCE)**:
@@ -104,7 +110,7 @@ If user provides context like: "include link to course" or "mention the GitHub r
    - WARN: "No analysis.md found. SEO optimization will be severely limited. Strongly recommend running /yt.analyze first."
    - Continue with generic description, but flag this to user
 
-3. **Verify and read subtitle track**:
+3. **Verify and read subtitle track (CRITICAL - used for both resource extraction AND timestamps)**:
 
    - Search in `content/[project-name]/references/` for .srt or .vtt files
    - If not found: ERROR: "No subtitle file found in references folder. Please add a .srt or .vtt file with timestamps."
@@ -112,10 +118,11 @@ If user provides context like: "include link to course" or "mention the GitHub r
    **Parse subtitle content**:
 
    - Extract timestamp entries (format: `00:00:00,000 --> 00:00:05,000`)
-   - Read text content for each timestamp segment
+   - **Read ALL text content from the entire transcript** (this is the complete video dialogue)
+   - Store the complete transcript text for resource extraction (Step 2)
    - Identify major topic changes and key discussion points
    - Note important moments and transitions
-   - This data will be used ONLY for generating timestamps
+   - This data will be used for: 1) Extracting resource mentions, 2) Generating timestamps
 
 4. **Load supplementary context** (if available):
 
@@ -131,43 +138,116 @@ If user provides context like: "include link to course" or "mention the GitHub r
 
 ---
 
-### Step 2: Generate Links Section (FIRST in Description)
+### Step 2: Extract Resource Mentions from Transcript
+
+**CRITICAL**: This step analyzes the subtitle/transcript content to identify external resources mentioned in the video.
+
+**Data Source**: Complete transcript text from subtitle file (loaded in Step 1)
+
+**Process**:
+
+1. **Analyze the entire transcript** for mentions of:
+
+   - **Documentation**: "OpenAI docs", "Claude Code documentation", "React docs", "API reference", etc.
+   - **Tools/Services**: "GitHub Copilot", "Cursor IDE", "n8n", "Make.com", etc.
+   - **GitHub Repositories**: Any mention of repos, code samples, or GitHub projects
+   - **Other Videos**: References to other tutorials or video content
+   - **Official Websites**: Product sites, service pages, platform homepages
+   - **Courses/Tutorials**: External learning resources
+   - **Articles/Blog Posts**: Written content referenced
+   - **Any other external resources** mentioned as "I'll link to X in the description"
+
+2. **Extract context for each mention**:
+
+   - What is the resource? (e.g., "OpenAI Chat Completions API documentation")
+   - Why is it mentioned? (e.g., "for reference on how to structure prompts")
+   - How is it described in the video? (use this for the link description)
+
+3. **Create structured resource list**:
+
+   ```
+   For each resource found:
+   - Resource Name: [Clear, descriptive name]
+   - Description: [Casual, welcoming description from video context]
+   - Suitable Emoji: [Choose appropriate emoji - 📚 for docs, 🔧 for tools, 🎥 for videos, etc.]
+   - URL Placeholder: [URL]
+   ```
+
+4. **Quality Guidelines**:
+
+   - Only include resources that are clearly referenced as "check out", "I'll link", "see the docs", etc.
+   - Don't include every passing mention - focus on resources the viewer would want to access
+   - Use casual, welcoming language for descriptions
+   - Choose emojis that fit the resource type
+   - If no external resources are mentioned: Return empty list (no error)
+
+**Output**: A list of resource entries ready for the links section, each needing only the URL to be filled in.
+
+**Example Output**:
+
+```
+Resources extracted from transcript:
+1. 📚 OpenAI Chat Completions API Documentation: [URL]
+2. 🔧 Claude Code Official Marketplace: [URL]
+3. 🎥 Previous tutorial on Claude Code Hooks: [URL]
+4. ☕ Anthropic's Model Context Protocol Docs: [URL]
+```
+
+---
+
+### Step 3: Generate Links Section (FIRST in Description)
 
 **CRITICAL**: Links go at the TOP of the description, before the SEO paragraph
 
-**Structure** (using Nate's style - emoji + compelling CTA + URL):
+**Structure**: Single-line format with emoji + description + URL
 
-**CRITICAL PRIORITY ORDER**: Sponsors → Affiliates → Resources
+**CRITICAL PRIORITY ORDER**: Sponsors → Affiliates → Resources (from Step 2) → Support Links
 
 ```
 [IF SPONSOR LINKS PROVIDED BY USER - ALWAYS PUT THESE FIRST]:
-🎁 [Compelling CTA for sponsor product]:
-[URL]
-[Coupon code if applicable]
+🎁 [Compelling CTA for sponsor product]: [URL]
+Coupon Code: [CODE] (if applicable)
 
-💬 Want my full voice to text software? Check out WisprFlow:
-https://wisprflow.ai/r?LEON114
+💬 Want my full voice to text software? Check out WisprFlow: https://wisprflow.ai/r?LEON114
+🚀 Start building with n8n (use my link to support my channel ❤️): https://n8n.partnerlinks.io/f7f19w3vrhin
 
-🚀 Start building with n8n (use my link to support my channel ❤️):
-https://n8n.partnerlinks.io/f7f19w3vrhin
+[INSERT RESOURCES EXTRACTED FROM STEP 2 HERE]:
+[emoji] [Resource description from transcript analysis]: [URL]
+[emoji] [Resource description from transcript analysis]: [URL]
+(one line per resource)
 
-[IF RESOURCES MENTIONED IN VIDEO]:
-📚 [Resource Name]:
-[URL]
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 Donate using PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
 ```
 
 **Guidelines**:
 
-- **Priority order**: 1) Sponsors (ALWAYS FIRST), 2) Affiliates (WisprFlow, n8n), 3) Resources
+- **Format**: Everything on single lines (emoji + description + URL all on one line)
+- **Priority order**: 1) Sponsors (ALWAYS FIRST), 2) Affiliates (WisprFlow, n8n), 3) Resources (extracted from transcript in Step 2), 4) Support links (coffee, PayPal)
 - **ALWAYS include WisprFlow and n8n affiliate links** (these are standard)
-- Use Nate's style: emoji + compelling description/CTA + URL on separate line
+- **Dynamically include resources** extracted from Step 2 with `[URL]` placeholder for manual filling
+- **ALWAYS include Buy me a coffee and PayPal links at the end** of the links section
+- Use welcoming, casual descriptions with suitable emojis
 - Sponsor links are highest priority and go at the very top
-- Only include resources that were actually mentioned in the video
-- Keep CTAs short but persuasive
+- Resources come from Step 2 transcript analysis - these will have `[URL]` placeholders
+- Keep descriptions concise but compelling
+
+**Resource Link Format** (from Step 2):
+
+Each extracted resource should be formatted as:
+```
+[emoji] [Welcoming description based on video context]: [URL]
+```
+
+**Examples**:
+- `📚 Claude Code Hooks Documentation: [URL]`
+- `🔧 Check out Anthropic's official Claude Code marketplace: [URL]`
+- `🎥 My previous tutorial on setting up n8n workflows: [URL]`
+- `☕ OpenAI API Reference for Chat Completions: [URL]`
 
 ---
 
-### Step 3: Generate SEO Opening Paragraph (Analysis-Driven)
+### Step 4: Generate SEO Opening Paragraph (Analysis-Driven)
 
 **Target**: MAXIMUM 200 words that hook viewers and optimize for search
 
@@ -208,7 +288,7 @@ https://n8n.partnerlinks.io/f7f19w3vrhin
 
 ---
 
-### Step 4: Extract and Generate Timestamps
+### Step 5: Extract and Generate Timestamps
 
 **Process**:
 
@@ -253,35 +333,7 @@ https://n8n.partnerlinks.io/f7f19w3vrhin
 
 ---
 
-### Step 5: Generate Support the Channel Section
-
-**Structure**:
-
-```
-💰 SUPPORT THE CHANNEL:
-☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
-💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
-```
-
-**Notes**: This section appears AFTER timestamps and BEFORE the Connect section.
-
----
-
-### Step 6: Generate Connect Section
-
-**Structure**:
-
-```
-🔗 CONNECT:
-📺 Subscribe for weekly AI automation tutorials
-🐦 Follow on Twitter: https://x.com/leonvz
-```
-
-**Notes**: This section appears AFTER Support the Channel and BEFORE hashtags.
-
----
-
-### Step 7: Generate Three Strategic Hashtags (Analysis-Driven)
+### Step 6: Generate Three Strategic Hashtags (Analysis-Driven)
 
 **Hashtag Strategy** (exactly 3 hashtags):
 
@@ -322,43 +374,39 @@ https://n8n.partnerlinks.io/f7f19w3vrhin
 
 ---
 
-### Step 8: Assemble Complete Description
+### Step 7: Assemble Complete Description
 
 **Final Structure** (EXACTLY in this order):
 
 ```
-[Links Section - Priority order: 1) Sponsors, 2) Affiliates (WisprFlow, n8n), 3) Resources]
+[Links Section - Single-line format]
+  - Priority order: 1) Sponsors, 2) Affiliates (WisprFlow, n8n), 3) Resources, 4) Support (coffee, PayPal)
 
 [SEO Opening Paragraph - MAXIMUM 200 words]
 
 [Timestamps Section with ⏱️ emoji header - each label max 5 words]
-
-[Support the Channel Section]
-
-[Connect Section]
 
 [Three Strategic Hashtags]
 ```
 
 **Final Checks**:
 
-1. **Structure Order**: Links → SEO Paragraph → Timestamps → Support the Channel → Connect → Hashtags
-2. **Links Priority Order**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then resources
-3. **Links**: WisprFlow and n8n affiliate links included with Nate's style
-4. **SEO Paragraph**: Maximum 200 words (strict limit)
-5. First 150 characters are compelling (mobile test)
-6. Keywords appear naturally (no stuffing)
-7. All links are properly formatted
-8. **Timestamps**: Each label is 5 words or less, SEO-optimized with keywords
-9. Timestamps are accurate and descriptive
-10. **Support the Channel**: Donation links appear after timestamps
-11. **Connect**: Social links appear after Support the Channel
-12. Three hashtags follow the strategy
-13. Total character count under 5000
+1. **Structure Order**: Links → SEO Paragraph → Timestamps → Hashtags
+2. **Links Format**: Single-line entries (emoji + description + URL on one line)
+3. **Links Priority Order**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then resources, then support links (coffee, PayPal)
+4. **Links**: WisprFlow and n8n affiliate links included, plus Buy me a coffee and PayPal at end of links section
+5. **SEO Paragraph**: Maximum 200 words (strict limit)
+6. First 150 characters are compelling (mobile test)
+7. Keywords appear naturally (no stuffing)
+8. All links are properly formatted as single-line entries
+9. **Timestamps**: Each label is 5 words or less, SEO-optimized with keywords
+10. Timestamps are accurate and descriptive
+11. Three hashtags follow the strategy
+12. Total character count under 5000
 
 ---
 
-### Step 9: Generate Output Document
+### Step 8: Generate Output Document
 
 1. **Load template**: Read `.youtube/templates/description-template.md`
 
@@ -391,7 +439,7 @@ https://n8n.partnerlinks.io/f7f19w3vrhin
 
 ---
 
-### Step 10: Report Completion
+### Step 9: Report Completion
 
 Provide user with:
 
@@ -403,12 +451,21 @@ Provide user with:
 
    - Total character count (X / 5000)
    - Number of timestamps generated
+   - Number of resource links extracted from transcript (with `[URL]` placeholders to fill)
    - Hashtags used
 
-4. **Preview**: Show the complete copy-ready description
-
-5. **Next Steps**:
+4. **Resource Links Notice** (if any were extracted):
    ```
+   📋 NOTE: [X] resource links were extracted from your video transcript.
+   These have [URL] placeholders - please add the actual URLs before uploading:
+   - [List each resource with its description]
+   ```
+
+5. **Preview**: Show the complete copy-ready description
+
+6. **Next Steps**:
+   ```
+   🔗 IMPORTANT: Fill in [URL] placeholders for resource links
    ✅ Copy description to YouTube Studio
    📋 Verify all links are working
    ⏱️ Confirm timestamps match video
@@ -509,16 +566,17 @@ Before reporting completion, verify:
 - [ ] Links section at the TOP
 - [ ] SEO paragraph AFTER links
 - [ ] Timestamps AFTER description
-- [ ] Support the Channel section AFTER timestamps
-- [ ] Connect section AFTER Support the Channel
 - [ ] Hashtags at the BOTTOM
 
 ### Links Section ✅
-- [ ] **Priority order correct**: Sponsors FIRST, then affiliates, then resources
-- [ ] WisprFlow affiliate link included with Nate's style
-- [ ] n8n affiliate link included with Nate's style
-- [ ] Links organized with emoji headers
-- [ ] All links are properly formatted
+- [ ] **Single-line format**: emoji + description + URL all on one line
+- [ ] **Priority order correct**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then resources, then support links (coffee, PayPal)
+- [ ] WisprFlow affiliate link included
+- [ ] n8n affiliate link included
+- [ ] Buy me a coffee link included at end of links section
+- [ ] PayPal donation link included at end of links section
+- [ ] All links are properly formatted as single-line entries
+- [ ] Suitable emojis used for each link
 
 ### SEO Paragraph ✅
 - [ ] Maximum 200 words (STRICT limit - not 150-200, must be max 200)
@@ -587,21 +645,19 @@ Proceeding with limited optimization based on available content..."
 
 ## Example Output
 
-### Sample Description (New Format - Priority Order):
+### Sample Description (Single-Line Link Format with Dynamic Resource Extraction):
 
 ```
-🎁 Get Hostinger VPS (Black Friday Deal):
-https://hostinger.com/leon
+🎁 Get Hostinger VPS (Black Friday Deal): https://hostinger.com/leon
 Coupon Code: LEON (Additional 10% off)
 
-💬 Want my full voice to text software? Check out WisprFlow:
-https://wisprflow.ai/r?LEON114
-
-🚀 Start building with n8n (use my link to support my channel ❤️):
-https://n8n.partnerlinks.io/f7f19w3vrhin
-
-📚 Claude Code Hooks Documentation:
-https://docs.claude.com/en/docs/claude-code/hooks-guide
+💬 Want my full voice to text software? Check out WisprFlow: https://wisprflow.ai/r?LEON114
+🚀 Start building with n8n (use my link to support my channel ❤️): https://n8n.partnerlinks.io/f7f19w3vrhin
+📚 Claude Code Hooks Documentation: [URL]
+🔧 Anthropic's Official Claude Code Marketplace: [URL]
+🎥 My previous tutorial on setting up n8n webhooks: [URL]
+☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
+💵 Donate using PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
 
 Discover how to supercharge your Claude Code workflows by integrating custom hooks with N8N automation. Learn to receive instant Telegram notifications when your AI agent completes tasks or requires approval, perfect for long-running agentic coding processes. This comprehensive tutorial covers setting up Claude Code hooks, creating Python scripts, configuring N8N workflows, and integrating Telegram bots for real-time updates on any device.
 
@@ -619,27 +675,25 @@ Discover how to supercharge your Claude Code workflows by integrating custom hoo
 20:00 Testing Notification System
 22:22 Adding Approval Request Hooks
 
-💰 SUPPORT THE CHANNEL:
-☕ Buy me a coffee: https://www.buymeacoffee.com/leonvanzyl
-💵 PayPal: https://www.paypal.com/ncp/payment/EKRQ8QSGV6CWW
-
-🔗 CONNECT:
-📺 Subscribe for weekly AI automation tutorials
-🐦 Follow on Twitter: https://x.com/leonvz
-
 #claudecode #n8n #agenticai
 ```
 
-**Character Count**: ~1,750 / 5000
+**Character Count**: ~1,650 / 5000
 
 **Structure Verification**:
-✅ Links at top (Priority: Sponsor FIRST, then affiliates WisprFlow/n8n, then resources)
+✅ All links at top in single-line format
+✅ Priority order: Sponsor, affiliates (WisprFlow/n8n), resources (3 extracted from transcript with [URL] placeholders), support (coffee, PayPal)
 ✅ SEO paragraph after links (under 200 words)
 ✅ Timestamps with max 5-word labels
 ✅ SEO-optimized timestamp labels using keywords
-✅ Support the Channel section after timestamps
-✅ Connect section after Support the Channel
 ✅ Three hashtags at bottom
+
+**Resources Extracted from Transcript**:
+- 📚 Claude Code Hooks Documentation: [URL]
+- 🔧 Anthropic's Official Claude Code Marketplace: [URL]
+- 🎥 My previous tutorial on setting up n8n webhooks: [URL]
+
+(User needs to fill in these [URL] placeholders before uploading)
 
 **Hashtag Breakdown**:
 - #claudecode - Video-specific (main topic of the tutorial)

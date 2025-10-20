@@ -19,9 +19,9 @@ Create a SEO-optimized video description following this specific structure (EXAC
 1. **Links section** - All links at the TOP in single-line format:
    - Sponsors (if applicable)
    - Affiliates (WisprFlow, n8n)
-   - Resources mentioned in video
    - Support links (Buy me a coffee, PayPal)
-2. **SEO paragraph** (MAXIMUM 200 words) - Hook viewers and incorporate keywords naturally
+   - Resources mentioned in video
+2. **SEO paragraph** (Target: 150-250 words, Maximum 300 words) - Hook viewers and incorporate keywords naturally
 3. **Timestamps** - Extracted from subtitle track with SEO-optimized labels (MAX 5 words each)
 4. **Three strategic hashtags**:
    - Video-specific (most important keyword from the video)
@@ -249,7 +249,7 @@ Each extracted resource should be formatted as:
 
 ### Step 4: Generate SEO Opening Paragraph (Analysis-Driven)
 
-**Target**: MAXIMUM 200 words that hook viewers and optimize for search
+**Target**: 150-250 words (Maximum 300 words) - Hook viewers and optimize for search
 
 **IMPORTANT**: This comes AFTER the links section in the final description
 
@@ -264,7 +264,7 @@ Each extracted resource should be formatted as:
    - Match the **content vibe** (educational, entertaining, professional, etc.)
    - Create interest and urgency using **key themes** from analysis
 
-2. **Body** (remaining content up to MAXIMUM 200 words):
+2. **Body** (remaining content up to 300 words maximum):
    - Expand on the problem/opportunity using **target audience** context from analysis
    - What viewers will learn (draw from **key topics** in analysis)
    - Specific outcomes or benefits (use **value propositions**)
@@ -293,43 +293,52 @@ Each extracted resource should be formatted as:
 **Process**:
 
 1. **Parse subtitle file** (.srt or .vtt format)
-2. **Identify major topic changes** by analyzing:
 
-   - Content transitions in subtitle text
-   - Key phrases and discussion points
-   - Natural section breaks
-   - Important moments worth highlighting
+2. **Read through the entire transcript** and identify:
 
-3. **Create SEO-optimized labels** for each timestamp:
+   - **Main talking points**: What specific subjects are being discussed?
+   - **Subject changes**: When does the content shift to a new topic, instruction, or concept?
+   - **Key discussion topics**: What are the most important topics the viewer would want to navigate to?
+
+3. **Content-driven filtering** (CRITICAL):
+
+   - **Don't target a specific number** - let the content guide how many timestamps you create
+   - **Each timestamp = a distinct subject or talking point**
+   - **Ask**: "Is this a main subject being discussed?" If yes, timestamp it.
+   - **Skip**: Examples within a topic, brief asides, minor clarifications
+   - **Include**: Whenever a new specific subject, instruction, or major topic is introduced
+
+4. **Create SEO-optimized labels** for each main talking point:
 
    - **MAXIMUM 5 words per timestamp** (strict limit)
    - **SEO-optimized using keywords from analysis.md**
    - Use primary and secondary keywords naturally in labels
-   - Focus on value/topic, not generic descriptions
-   - Make it scannable and useful for viewers
+   - Focus on the actual subject/topic being discussed
+   - Make it clear what talking point this timestamp represents
    - Extract actual keywords from subtitle content
-   - Example: "Building n8n AI Agent" ✅ (5 words, includes keywords)
+   - Example: "Building n8n AI Agent" ✅ (5 words, includes keywords, clear subject)
    - Example: "Setting up and configuring the n8n AI automation agent workflow" ❌ (11 words, too long)
 
-4. **Format timestamps**:
+5. **Format timestamps**:
 
 ```
 ⏱️ TIMESTAMPS:
 00:00 - [SEO-Optimized Label - max 5 words]
-01:15 - [SEO-Optimized Label - max 5 words]
-02:22 - [SEO-Optimized Label - max 5 words]
-03:00 - [SEO-Optimized Label - max 5 words]
-[Continue for all major points...]
+[timestamp] - [SEO-Optimized Label - max 5 words]
+[timestamp] - [SEO-Optimized Label - max 5 words]
+[Continue for each main talking point...]
 ```
 
 **Quality Guidelines**:
 
-- Aim for 8-15 timestamps for a 15-25 minute video
-- Each timestamp should represent a meaningful topic change
+- **Content-driven**: Number of timestamps depends entirely on the content
+- **Each timestamp = a main talking point or subject**
+- **Identify subject changes**: When content shifts to a new specific topic/instruction
+- **Skip granular details**: Don't timestamp examples or minor points within a subject
 - **Each label MUST be 5 words or less**
-- **Labels MUST incorporate keywords from analysis.md**
-- Labels should be specific enough to help viewers navigate
-- Use the actual content from subtitles to inform labels
+- **Labels MUST incorporate keywords from analysis.md** for SEO optimization
+- Labels should clearly describe what subject/talking point is being discussed
+- Use the actual content from subtitles to identify when subjects change
 
 ---
 
@@ -382,7 +391,7 @@ Each extracted resource should be formatted as:
 [Links Section - Single-line format]
   - Priority order: 1) Sponsors, 2) Affiliates (WisprFlow, n8n), 3) Support (coffee, PayPal), 4) Resources
 
-[SEO Opening Paragraph - MAXIMUM 200 words]
+[SEO Opening Paragraph - Target: 150-250 words, Maximum 300 words]
 
 [Timestamps Section with ⏱️ emoji header - each label max 5 words]
 
@@ -395,7 +404,7 @@ Each extracted resource should be formatted as:
 2. **Links Format**: Single-line entries (emoji + description + URL on one line)
 3. **Links Priority Order**: Sponsors FIRST, then affiliates (WisprFlow, n8n), then support links (coffee, PayPal), then resources
 4. **Links**: WisprFlow and n8n affiliate links included, plus Buy me a coffee and PayPal after affiliates and before resources
-5. **SEO Paragraph**: Maximum 200 words (strict limit)
+5. **SEO Paragraph**: Target 150-250 words (Maximum 300 words)
 6. First 150 characters are compelling (mobile test)
 7. Keywords appear naturally (no stuffing)
 8. All links are properly formatted as single-line entries
@@ -450,7 +459,7 @@ Provide user with:
 3. **Quick Stats**:
 
    - Total character count (X / 5000)
-   - Number of timestamps generated
+   - Number of timestamps generated (based on main talking points identified)
    - Number of resource links extracted from transcript (with `[URL]` placeholders to fill)
    - Hashtags used
 
@@ -476,7 +485,7 @@ Provide user with:
 
 ## Description Writing Guidelines
 
-### SEO Opening Paragraph Best Practices (Maximum 200 Words)
+### SEO Opening Paragraph Best Practices (Target: 150-250 words, Maximum 300 words)
 
 **IMPORTANT**: This comes AFTER the links section in the final description
 
@@ -490,7 +499,7 @@ long-running agentic coding processes. This comprehensive tutorial covers
 setting up Claude Code hooks, creating Python scripts, configuring N8N
 workflows, and integrating Telegram bots for real-time updates on any device.
 ```
-(~75 words - well under the 200-word maximum)
+(~75 words - good foundation, could be expanded to 150-250 words for better SEO)
 
 **BAD Opening** ❌:
 
@@ -501,37 +510,48 @@ really cool about Claude Code and N8N that I think you'll find interesting...
 
 **Key Differences**:
 
-- Good: Immediate value, specific outcomes, natural keywords, under 200 words
+- Good: Immediate value, specific outcomes, natural keywords, within target range
 - Bad: Generic greeting, vague promise, no keywords, wastes character count
 
 ---
 
 ### Timestamp Guidelines
 
-**Effective Timestamps** ✅ (Max 5 words, SEO-optimized):
+**Effective Timestamps** ✅ (Main talking points only):
 
 ```
 ⏱️ TIMESTAMPS:
 00:00 - Claude Code Hooks Introduction
-01:15 - Understanding Hook Events
-02:22 - Long-Running Agentic Task Solution
-03:00 - Setting Up First Hook
-04:33 - Creating Python Hook Scripts
+03:15 - Creating Python Hook Scripts
+09:00 - N8N Workflow Configuration
+16:30 - Testing Telegram Integration
 ```
+
+**Why these work**:
+- Each represents a distinct subject/talking point
+- Clear SEO-optimized labels (5 words max)
+- Viewer can easily identify what each section covers
+- Keywords incorporated naturally
 
 **Poor Timestamps** ❌:
 
 ```
 0:00 Intro (too generic, no keywords)
+1:00 Understanding hook events (minor point within a larger subject)
+2:00 Example scenario (example, not a main talking point)
 5:00 Main content (no value, not descriptive)
 15:00 Setting up and configuring the complete n8n automation workflow system (11 words - WAY too long)
 ```
 
 **Key Principles**:
+- **Content-driven**: Let the actual subjects discussed determine how many timestamps
+- **Main talking points only**: Each timestamp = a distinct subject or topic
+- **Identify subject changes**: When content shifts to a new specific topic/instruction
 - **Maximum 5 words per label** (strict limit)
 - **Include keywords from analysis.md** (SEO optimization)
-- Descriptive and valuable for navigation
-- Extract from actual subtitle content
+- **Skip examples and details**: Only timestamp when a new subject begins
+- Descriptive and valuable for navigation to main sections
+- Extract from actual subtitle content analysis
 
 ---
 
@@ -579,18 +599,23 @@ Before reporting completion, verify:
 - [ ] Suitable emojis used for each link
 
 ### SEO Paragraph ✅
-- [ ] Maximum 200 words (STRICT limit - not 150-200, must be max 200)
+- [ ] Target 150-250 words (Maximum 300 words)
 - [ ] First 150 characters are compelling (mobile test)
 - [ ] Primary keyword in first 25 words (if search-focused)
 - [ ] No keyword stuffing
 - [ ] Natural keyword integration
 
 ### Timestamps ✅
+- [ ] **Content-driven count** - number based on actual main talking points (not a target number)
+- [ ] **Each timestamp = a distinct subject/talking point**
+- [ ] Timestamps identify when content shifts to new specific topics/instructions
 - [ ] Timestamps extracted from subtitle file
 - [ ] **Each timestamp is MAXIMUM 5 words** (strict limit)
 - [ ] **Timestamps are SEO-optimized using analysis.md keywords**
+- [ ] Labels clearly describe the subject/talking point
 - [ ] Labels are descriptive (not generic "intro", "main content")
 - [ ] Keywords naturally incorporated in timestamp labels
+- [ ] Examples and minor details within subjects are skipped
 
 ### Hashtags ✅
 - [ ] Exactly 3 hashtags following the strategy
@@ -665,27 +690,22 @@ Discover how to supercharge your Claude Code workflows by integrating custom hoo
 
 ⏱️ TIMESTAMPS:
 00:00 - Claude Code Hooks Introduction
-01:15 - Understanding Hook Events
-02:22 - Long-Running Agentic Task Solution
-03:00 - Setting Up First Hook
-04:33 - Creating Python Hook Scripts
-06:26 - Debugging Hook Inputs
-08:33 - Extracting Agent Message Transcripts
-11:31 - N8N Cloud Setup
-14:31 - N8N Workflow Telegram Bot
-16:46 - Webhook Integration Setup
-20:00 - Testing Notification System
-22:22 - Adding Approval Request Hooks
+02:45 - Creating Python Hook Scripts
+08:20 - N8N Cloud Workflow Setup
+14:30 - Telegram Bot Integration
+20:15 - Testing Complete Notification System
 
 #claudecode #n8n #agenticai
 ```
 
-**Character Count**: ~1,650 / 5000
+**Character Count**: ~1,350 / 5000
 
 **Structure Verification**:
 ✅ All links at top in single-line format
 ✅ Priority order: Sponsor, affiliates (WisprFlow/n8n), support (coffee, PayPal), resources (3 extracted from transcript with [URL] placeholders)
-✅ SEO paragraph after links (under 200 words)
+✅ SEO paragraph after links (150-250 words, under 300 words maximum)
+✅ 5 timestamps (content-driven count based on main talking points identified)
+✅ Each timestamp = distinct subject/talking point
 ✅ Timestamps with max 5-word labels
 ✅ SEO-optimized timestamp labels using keywords
 ✅ Three hashtags at bottom

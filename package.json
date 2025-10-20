@@ -1,6 +1,6 @@
 {
   "name": "create-youtube-agent",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "YouTube content optimization workflow system using Claude Code slash commands",
   "main": "bin/cli.js",
   "bin": {
